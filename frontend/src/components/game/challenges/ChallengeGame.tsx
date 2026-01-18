@@ -6,18 +6,23 @@ import { toast } from 'react-hot-toast';
 
 // Import Game Components (will be created next)
 import { DragDropGame } from './DragDropGame';
+import { DragOrderGame } from './DragOrderGame';
 import { ScenarioGame } from './ScenarioGame';
 import { TapSelectGame } from './TapSelectGame';
 import { StoryGame } from './StoryGame';
+import { VideoStoryGame } from './VideoStoryGame';
 import { TimeChallengeGame } from './TimeChallengeGame';
+import { QuizGame } from './QuizGame';
+import { ReflectionGame } from './ReflectionGame';
 
 interface ChallengeGameProps {
     level: any;
     onClose: () => void;
     mode?: 'sequence' | 'single';
+    puzzleId?: string;
 }
 
-export const ChallengeGame = ({ level, onClose, mode = 'sequence' }: ChallengeGameProps) => {
+export const ChallengeGame = ({ level, onClose, mode = 'sequence', puzzleId }: ChallengeGameProps) => {
     const [challenges, setChallenges] = useState<any[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState(0);
@@ -25,41 +30,35 @@ export const ChallengeGame = ({ level, onClose, mode = 'sequence' }: ChallengeGa
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (level && level.games) {
-            // Flatten games into a sequence
-            const sequence: any[] = [];
-
-            if (level.games.drag) level.games.drag.forEach((g: any, i: number) => sequence.push({ ...g, type: 'drag', id: `drag-${i}` }));
-            if (level.games.situation) level.games.situation.forEach((g: any, i: number) => sequence.push({ ...g, type: 'situation', id: `situation-${i}` }));
-            if (level.games.tap) level.games.tap.forEach((g: any, i: number) => sequence.push({ ...g, type: 'tap', id: `tap-${i}` }));
-            if (level.games.story) level.games.story.forEach((g: any, i: number) => sequence.push({ ...g, type: 'story', id: `story-${i}` }));
-
-            // Group all time challenges into one continuous "Blitz" game
-            if (level.games.time && level.games.time.length > 0) {
-                sequence.push({
-                    type: 'time',
-                    id: 'time-blitz',
-                    questions: level.games.time // Pass all time questions here
-                });
+        if (level) {
+            // New Logic: Use level.challenges if available
+            if (level.challenges && level.challenges.length > 0) {
+                if (mode === 'single' && puzzleId) {
+                    const foundChallenge = level.challenges.find((c: any) => c._id === puzzleId);
+                    if (foundChallenge) {
+                        setChallenges([foundChallenge]);
+                    } else {
+                        console.error("Challenge not found for ID:", puzzleId);
+                        setChallenges([]);
+                    }
+                } else {
+                    setChallenges(level.challenges);
+                }
+                setLoading(false);
+                return;
             }
-
-            if (mode === 'single' && sequence.length > 0) {
-                // Pick one random challenge
-                const randomChallenge = sequence[Math.floor(Math.random() * sequence.length)];
-                setChallenges([randomChallenge]);
-            } else {
-                setChallenges(sequence);
-            }
-
-            setLoading(false);
+        } else {
+            toast.error("Level not found");
+            onClose();
         }
-    }, [level, mode]);
+    }, [level, mode, puzzleId]);
 
     const handleChallengeComplete = async (xp: number) => {
         try {
-
-            setScore(prev => prev + xp);
-            toast.success("Challenge Solved!", { icon: '✅' });
+            // Use the XP from the challenge logic or the default passed value
+            const earnedXp = challenges[currentIndex].xp || xp;
+            setScore(prev => prev + earnedXp);
+            toast.success(`Challenge Solved! +${earnedXp} XP`, { icon: '✅' });
 
             // Next Challenge Logic
             if (currentIndex < challenges.length - 1) {
@@ -109,14 +108,33 @@ export const ChallengeGame = ({ level, onClose, mode = 'sequence' }: ChallengeGa
     const currentChallenge = challenges[currentIndex];
 
     // Identify game component
+    // Identify game component
     let GameComponent;
-    switch (currentChallenge.type) {
-        case 'drag': GameComponent = DragDropGame; break;
-        case 'situation': GameComponent = ScenarioGame; break;
-        case 'tap': GameComponent = TapSelectGame; break;
-        case 'story': GameComponent = StoryGame; break;
-        case 'time': GameComponent = TimeChallengeGame; break;
-        default: GameComponent = () => <div>Unknown Game Type</div>;
+    const type = currentChallenge.type;
+    const gameType = currentChallenge.gameType;
+
+    if (type === 'story' && gameType === 'story_video') {
+        GameComponent = VideoStoryGame;
+    } else if (type === 'true_false_quiz') {
+        GameComponent = QuizGame;
+    } else if (type === 'reflection_story') {
+        GameComponent = ReflectionGame;
+    } else if (type === 'drag_and_match') {
+        GameComponent = DragOrderGame;
+    }
+    // Legacy / Generic types
+    else if (type === 'drag') {
+        GameComponent = DragDropGame;
+    } else if (type === 'situation') {
+        GameComponent = ScenarioGame;
+    } else if (type === 'tap') {
+        GameComponent = TapSelectGame;
+    } else if (type === 'story') {
+        GameComponent = StoryGame;
+    } else if (type === 'time') {
+        GameComponent = TimeChallengeGame;
+    } else {
+        GameComponent = () => <div className="text-white p-4">Unknown Game Type: {type} {gameType && `(${gameType})`}</div>;
     }
 
     return (
@@ -148,7 +166,7 @@ export const ChallengeGame = ({ level, onClose, mode = 'sequence' }: ChallengeGa
                         className="h-full"
                     >
                         <GameComponent
-                            data={currentChallenge}
+                            data={currentChallenge.data || currentChallenge} // Support both new nested data and legacy flat structure
                             onComplete={handleChallengeComplete}
                         />
                     </motion.div>

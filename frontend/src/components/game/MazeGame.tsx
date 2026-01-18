@@ -22,6 +22,7 @@ export const MazeGame = ({ onClose, levelId }: MazeGameProps) => {
                 try {
                     const res = await gameApi.getLevel(levelId);
                     const data = res.data;
+                    console.log(data);
                     setLevelData(data);
 
                     // Generate maze AFTER knowing if we have games
@@ -33,7 +34,7 @@ export const MazeGame = ({ onClose, levelId }: MazeGameProps) => {
                         seed: Date.now(),
                         difficulty: 'EASY',
                         puzzleDensity: hasGames ? 0.1 : 0
-                    }, levelId);
+                    }, levelId, data.challenges);
 
                 } catch (e) {
                     console.error("Failed to load level data", e);
@@ -87,6 +88,7 @@ export const MazeGame = ({ onClose, levelId }: MazeGameProps) => {
                                 level={levelData}
                                 onClose={handleChallengeComplete}
                                 mode="single"
+                                puzzleId={activePuzzle}
                             />
                         </div>
                     </motion.div>

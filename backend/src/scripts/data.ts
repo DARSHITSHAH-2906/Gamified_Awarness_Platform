@@ -11,137 +11,273 @@ export default [
                 levelId: "101",
                 title: "Quest Begins",
                 x: 50, y: 10,
-                games: {
-                    drag: [
-                        { q: "Full Form", options: ["Right to Information", "Right to Internet", "Right to Income"], a: ["Right to Information"] },
-                        { q: "Who asks?", options: ["Citizen", "President", "Alien"], a: ["Citizen"] }
-                    ],
-                    situation: [
-                        { q: "Denied info?", a: "It is your right" },
-                        { q: "Why RTI?", a: "To know truth" }
-                    ],
-                    tap: [
-                        { q: "Is RTI a law?", a: "Yes" },
-                        { q: "Who owns info?", a: "Public" }
-                    ],
-                    story: [
-                        { q: "Ravi asks question", a: "Files RTI" },
-                        { q: "Wants transparency", a: "Uses Right" }
-                    ],
-                    time: [
-                        { q: "Tap RTI terms", a: ["Transparency", "Accountability", "Citizen"] },
-                        { q: "Tap goals", a: ["Truth", "Justice"] }
-                    ]
-                }
-            },
-            {
-                levelId: "102",
-                title: "The Filing",
-                x: 25, y: 30,
-                games: {
-                    drag: [
-                        { q: "Application to", options: ["Public Info Officer", "Police", "Judge"], a: ["Public Info Officer"] },
-                        { q: "Fee", options: ["Nominal Amount", "One Million", "Free"], a: ["Nominal Amount"] }
-                    ],
-                    situation: [
-                        { q: "No form found", a: "Use plain paper" },
-                        { q: "Officer refuses", a: "Send by post" }
-                    ],
-                    tap: [
-                        { q: "Time limit?", a: "30 Days" },
-                        { q: "Life & Liberty?", a: "48 Hours" }
-                    ],
-                    story: [
-                        { q: "Anita writes letter", a: "Submits RTI" },
-                        { q: "Pays fee", a: "Gets receipt" }
-                    ],
-                    time: [
-                        { q: "Tap process", a: ["Draft", "Pay Fee", "Submit"] },
-                        { q: "Tap essentials", a: ["Name", "Address", "Details"] }
-                    ]
-                }
-            },
-            {
-                levelId: "103",
-                title: "Bureaucracy",
-                x: 75, y: 50,
-                games: {
-                    drag: [
-                        { q: "No reply?", options: ["First Appeal", "Cry", "Forget it"], a: ["First Appeal"] },
-                        { q: "Authority", options: ["Senior Officer", "Clerk", "Peon"], a: ["Senior Officer"] }
-                    ],
-                    situation: [
-                        { q: "Rejected wrongly", a: "File Appeal" },
-                        { q: "Delay tactics", a: "Complain" }
-                    ],
-                    tap: [
-                        { q: "Appeal time?", a: "30 Days" },
-                        { q: "Can they hide info?", a: "Only exceptions" }
-                    ],
-                    story: [
-                        { q: "Files disappear", a: "Demand inquiry" },
-                        { q: "Officer sleeps", a: "Wake up call (Appeal)" }
-                    ],
-                    time: [
-                        { q: "Tap actions", a: ["Appeal", "Complain", "Remind"] },
-                        { q: "Tap hierarchy", a: ["PIO", "First Appellate", "Commission"] }
-                    ]
-                }
-            },
-            {
-                levelId: "104",
-                title: "Transparency",
-                x: 35, y: 70,
-                games: {
-                    drag: [
-                        { q: "Records", options: ["Open to Public", "Top Secret", "Burned"], a: ["Open to Public"] },
-                        { q: "Corruption", options: ["Exposed", "Hidden", "Ignored"], a: ["Exposed"] }
-                    ],
-                    situation: [
-                        { q: "Road funds", a: "Check Tender" },
-                        { q: "School lunch", a: "Check Menu" }
-                    ],
-                    tap: [
-                        { q: "Is secrecy good?", a: "No" },
-                        { q: "Helps democracy?", a: "Yes" }
-                    ],
-                    story: [
-                        { q: "Village checks logs", a: "Finds ghost workers" },
-                        { q: "Student asks marks", a: "Gets copy" }
-                    ],
-                    time: [
-                        { q: "Tap benefits", a: ["Honesty", "Trust", "Efficiency"] },
-                        { q: "Tap tools", a: ["File Inspection", "Certified Copy"] }
-                    ]
-                }
-            },
-            {
-                levelId: "105",
-                title: "Knowledge Power",
-                x: 65, y: 90,
-                games: {
-                    drag: [
-                        { q: "Information is", options: ["Power", "Weakness", "Noise"], a: ["Power"] },
-                        { q: "Citizen is", options: ["King", "Slave", "Servant"], a: ["King"] }
-                    ],
-                    situation: [
-                        { q: "Ration stopped", a: "RTI fixed it" },
-                        { q: "Pension delayed", a: "RTI tracking" }
-                    ],
-                    tap: [
-                        { q: "Changed lives?", a: "Many" },
-                        { q: "Your duty?", a: "Stay informed" }
-                    ],
-                    story: [
-                        { q: "Community unites", a: "Files joint RTI" },
-                        { q: "Govt responds", a: "Fixes issue" }
-                    ],
-                    time: [
-                        { q: "Tap results", a: ["Action", "Justice", "Equality"] },
-                        { q: "Tap values", a: ["Truth", "Rights", "Freedom"] }
-                    ]
-                }
-            },
+                challenges: [
+                    {
+                        order: 1,
+                        type: "story",
+                        gameType: "story_video",
+                        lawId: "law_rti",
+                        title: "Meet Your Guide Character",
+                        xp: 5,
+                        videoScript: {
+                            title: "Introduction to RTI",
+                            duration: 60,
+                            voiceOver: "Indian English - Female",
+                            content: [
+                                { timing: "0-5s", visual: "Animated girl (age 12) with question mark above head", script: "Hi! I'm Priya. Have you ever wondered... why does the government do what it does?" },
+                                { timing: "5-15s", visual: "Scenes of government buildings, people voting, schools", script: "Like, why does MY school's lunch menu change? Or where does the city's money go? Well, there's a LAW for that." },
+                                { timing: "15-25s", visual: "Animated document flying onto screen with glowing effect", script: "It's called the RIGHT TO INFORMATION - or RTI. And guess what? YOU can use it. Even at your age!" },
+                                { timing: "25-40s", visual: "Priya pointing at 3 animated steps: Write → Send → Wait → Get Answer", script: "Here's how it works: You write a question, send it to the government, wait 30 days, and they MUST tell you!" },
+                                { timing: "40-55s", visual: "Priya winking, animated badge appearing", script: "In this quest, you'll become an RTI expert just like me. You'll learn how to ask BIG questions about your city." },
+                                { timing: "55-60s", visual: "Animated RTI badge, Priya smiling", script: "Ready to be a change-maker? Let's go!" }
+                            ]
+                        },
+                        videoGeneration: {
+                            tool: "Krikey AI",
+                            character: "Priya (age 12, brown skin, Indian features, friendly)",
+                            background: "Bright classroom with posters",
+                            music: "Upbeat educational soundtrack",
+                            subtitles: true,
+                            textSize: "large",
+                            colorScheme: "#3b82f6"
+                        },
+                        challenge: {
+                            instruction: "Watch Priya's story about RTI. Then answer: What is RTI used for?",
+                            options: [
+                                { text: "To get information from the government", isCorrect: true, xp: 5 },
+                                { text: "To change laws", isCorrect: false, xp: 1, feedback: "RTI isn't for changing laws - it's for transparency!" },
+                                { text: "To complain to the government", isCorrect: false, xp: 1, feedback: "That's different. RTI is specifically for asking questions about public information." }
+                            ]
+                        },
+                        reward: {
+                            unlocks: "Priya as your guide character",
+                            badge: "RTI Listener"
+                        }
+                    },
+                    {
+                        type: "drag_and_match",
+                        gameType: "drag",
+                        lawId: "law_rti",
+                        title: "RTI Process: Put in Order",
+                        order: 2,
+                        difficulty: "easy",
+                        xp: 8,
+                        instruction: "Drag the steps in the RIGHT order to file an RTI",
+                        items: [
+                            { id: "drag_1", label: "I write my question on paper", correctPosition: 1, hint: "Start here: What do you want to know?", description: "You write clearly what information you need from which government office" },
+                            { id: "drag_2", label: "I send it to the right office", correctPosition: 2, hint: "Now where does it go?", description: "Send your letter to the PUBLIC INFORMATION OFFICER of that office (usually via post or hand-delivery)" },
+                            { id: "drag_3", label: "I wait for 30 days", correctPosition: 3, hint: "Be patient!", description: "The law gives the government 30 days maximum to give you the answer (45 days for very complex requests)" },
+                            { id: "drag_4", label: "I get the information!", correctPosition: 4, hint: "Success!", description: "The office MUST give you the information or explain why they can't (for privacy/security reasons)" }
+                        ],
+                        rules: { allowRetries: true, showHintAfterSeconds: 30, shuffleOptions: true, showFeedback: "after_each_drop" },
+                        feedback: {
+                            allCorrect: "Perfect! You're an RTI process expert! 🎉 The key is: WRITE → SEND → WAIT → RECEIVE",
+                            partiallyCorrect: "You're close! Let me help you think about the right order...",
+                            incorrect: "Not quite! Remember: You first write what you want, then send it, wait, then get your answer. Try again!"
+                        },
+                        educationalContent: {
+                            legalBasis: "RTI Act 2005, Section 6 - Filing of Request",
+                            realWorldExample: "Priya wanted to know why her school's lunch supplier changed. She followed these exact steps and GOT the answer in 28 days!",
+                            keyTakeaway: "The process is SIMPLE - anyone can do it!"
+                        },
+                        reward: { badge: "RTI Process Master", unlocksNextChallenge: true }
+                    },
+                    {
+                        type: "scenario_choice",
+                        gameType: "situation",
+                        lawId: "law_rti",
+                        title: "Can You Use RTI Here?",
+                        order: 3,
+                        difficulty: "medium",
+                        xp: 10,
+                        scenario: {
+                            setup: "Your school principal says: 'I won't tell you how much money the school spent on the new computer lab. It's none of your business!'",
+                            context: "This is a government school in your city",
+                            question: "Can you file an RTI to get this information?",
+                            character: "Priya (your guide)"
+                        },
+                        choices: [
+                            {
+                                id: "choice_yes",
+                                answer: "YES! File RTI for the lab budget details",
+                                isCorrect: true,
+                                xp: 10,
+                                feedback: {
+                                    title: "🎉 Excellent Decision!",
+                                    explanation: "Government schools receive PUBLIC money and are PUBLIC AUTHORITIES. School budgets are public information under RTI!",
+                                    whyCorrect: "The Right to Information Act covers ALL government offices, including schools. Your tax money (through your parents) pays for the school, so you have the right to know how it's spent.",
+                                    realWorldExample: "A girl in Delhi used RTI to find out her school was paying 3x normal price for books - and it got fixed!"
+                                },
+                                legalBasis: {
+                                    act: "Right to Information Act, 2005",
+                                    section: "Section 2(a) - Definition of 'Public Authority'",
+                                    quote: "A public authority includes any government institution or body substantially financed by government",
+                                    relevance: "Schools get government funding, so they're public authorities and subject to RTI"
+                                },
+                                nextStep: "Go ahead and draft your RTI letter! Would you like help writing it?"
+                            },
+                            {
+                                id: "choice_no_private",
+                                answer: "NO - schools are private so I can't ask",
+                                isCorrect: false,
+                                xp: 2,
+                                feedback: {
+                                    title: "Not quite right!",
+                                    explanation: "Even though schools might FEEL private, government schools are actually public authorities because they use government money and resources.",
+                                    whyIncorrect: "There's a difference between PRIVATE schools (only for rich kids) and GOVERNMENT schools (for everyone). Government schools belong to everyone, so you can ask questions about them!",
+                                    learnMore: "If it was a private school, you'd be right. But government schools? They're public!"
+                                }
+                            },
+                            {
+                                id: "choice_only_adults",
+                                answer: "NO - only adults can file RTI",
+                                isCorrect: false,
+                                xp: 1,
+                                feedback: {
+                                    title: "Actually, you CAN!",
+                                    explanation: "The law says 'ANY CITIZEN' can file RTI. That includes kids!",
+                                    whyIncorrect: "Most kids file RTI through their parents/guardians (since they're legally responsible), but the right belongs to everyone over 18, and even younger kids can participate with guardian help.",
+                                    historical: "Many kids have successfully used RTI - like students who discovered their school's free meal scheme was being misused!"
+                                }
+                            },
+                            {
+                                id: "choice_costs_money",
+                                answer: "NO - filing RTI costs money and my family can't afford it",
+                                isCorrect: false,
+                                xp: 1,
+                                feedback: {
+                                    title: "Great news - it's FREE!",
+                                    explanation: "RTI is a FUNDAMENTAL RIGHT. It costs nothing to file!",
+                                    whyIncorrect: "The government made RTI free on purpose - so everyone (even poor families) can ask for transparency.",
+                                    bonus: "If they delay responding, that's illegal and you can file a complaint for FREE too!"
+                                }
+                            }
+                        ],
+                        reward: { badge: "RTI Scenario Expert", progressBar: "40% Complete - Great job!" },
+                        followUp: {
+                            ifCorrect: "Ready to write an actual RTI letter? Let's practice in the next challenge!",
+                            ifIncorrect: "Let's dive deeper into RTI rules in the next challenge!"
+                        }
+                    },
+                    {
+                        type: "true_false_quiz",
+                        gameType: "tap",
+                        lawId: "law_rti",
+                        title: "RTI Knowledge Check",
+                        order: 4,
+                        difficulty: "easy",
+                        xp: 15, // Base XP
+                        rules: { timePerQuestion: 20, totalDuration: 100, showScore: true, allowRetakes: true, passingScore: 75 },
+                        questions: [
+                            {
+                                id: "q1",
+                                question: "I can ask the government for ANY information I want, even if it's about someone else's private life",
+                                correctAnswer: false,
+                                correctXP: 3, incorrectXP: 1,
+                                explanation: {
+                                    ifTrue: "Almost! But there ARE limits. RTI doesn't cover PRIVATE information about specific people, only PUBLIC information about government work.",
+                                    ifFalse: "Correct! RTI has limits. Information about: • Private details of citizens • National security secrets • Medical records of people • Trade secrets of businesses ...are NOT available through RTI",
+                                    realExample: "You CAN ask 'How many people are in school X?' but you CANNOT ask 'What are Raj's grades?'"
+                                }
+                            },
+                            {
+                                id: "q2",
+                                question: "The government MUST give me the information within 30 days or they break the law",
+                                correctAnswer: true,
+                                correctXP: 3, incorrectXP: 1,
+                                explanation: {
+                                    ifTrue: "YES! This is the LAW. If they delay, you can file a complaint and they get fined!",
+                                    ifFalse: "Actually, they must! The 30-day deadline is in the RTI law. If they don't respond in time, that's illegal!",
+                                    realExample: "If government takes 40 days to respond to your RTI without permission, you can complain to the INFORMATION COMMISSION"
+                                }
+                            },
+                            {
+                                id: "q3",
+                                question: "Filing an RTI application needs to be in a special government form with fancy language",
+                                correctAnswer: false,
+                                correctXP: 3, incorrectXP: 1,
+                                explanation: {
+                                    ifTrue: "No way! RTI is supposed to be SIMPLE. You can write a simple letter in normal language!",
+                                    ifFalse: "Correct! The whole point of RTI is that ANYONE can use it. You just need: • Your name • What you want to know (clearly) • Which office to send it to • That's it! No special form needed!",
+                                    template: "Example: 'I want to know how many students attended my school in 2024 and what was spent on uniforms.'"
+                                }
+                            },
+                            {
+                                id: "q4",
+                                question: "RTI helps stop corruption by making government work TRANSPARENT",
+                                correctAnswer: true,
+                                correctXP: 3, incorrectXP: 1,
+                                explanation: {
+                                    ifTrue: "EXACTLY! When people can ASK questions and GET answers, officials can't hide mistakes or theft!",
+                                    ifFalse: "Actually it does! The whole idea of RTI is transparency = honesty. If officials know people can ask about their work, they're more careful and honest.",
+                                    impact: "Studies show RTI has helped catch: fake billing, teacher absence fraud, stolen supplies, and more!"
+                                }
+                            },
+                            {
+                                id: "q5",
+                                question: "You need to be rich or have connections to use RTI successfully",
+                                correctAnswer: false,
+                                correctXP: 3, incorrectXP: 1,
+                                explanation: {
+                                    ifTrue: "Absolutely not! RTI is for EVERYONE equally. Poor families use it just as much as rich ones!",
+                                    ifFalse: "Correct! RTI is the GREAT EQUALIZER. A poor farmer can file the same RTI as a businessman. The law is fair to all!",
+                                    proof: "Millions of Indians across all classes use RTI - farmers, students, homemakers, everyone!"
+                                }
+                            }
+                        ],
+                        scoring: {
+                            perfect: { xp: 15, message: "Outstanding! You're an RTI expert! 🏆", badge: "RTI Knowledge Master" },
+                            good: { xp: 10, message: "Great job! You understand RTI well!", badge: "RTI Apprentice" },
+                            passing: { xp: 5, message: "Good start! Review the answers and try again if you'd like.", retakeOption: true },
+                            failing: { xp: 2, message: "Let's review this together!", reviewOption: true }
+                        },
+                        reward: { nextChallenge: "Now practice writing a real RTI letter!" }
+                    },
+                    {
+                        type: "reflection_story",
+                        gameType: "story",
+                        lawId: "law_rti",
+                        title: "YOUR RTI Story",
+                        order: 5,
+                        difficulty: "medium",
+                        xp: 7,
+                        prompt: {
+                            main: "Think about something in YOUR life (school, neighborhood, city) that you'd like to know more about. Write a SHORT story about how you'd use RTI to find answers.",
+                            minWords: 100, maxWords: 300, timeLimit: 600
+                        },
+                        examples: {
+                            title: "Ideas to get you started:",
+                            ideas: [
+                                { scenario: "School Mystery", prompt: "Why does your school spend 50% more on sports than studies? File RTI to find out!", ageGroup: "8-10" },
+                                { scenario: "City Problem", prompt: "Your neighborhood roads are always broken. Use RTI to find out where maintenance money goes!", ageGroup: "10-13" },
+                                { scenario: "Environmental Concern", prompt: "A nearby factory is causing air pollution. Use RTI to get their environmental reports!", ageGroup: "13-16" }
+                            ]
+                        },
+                        submissionGuidelines: {
+                            include: ["What do you want to know?", "Why is it important to YOU?", "How would you use RTI to find the answer?", "What would you do with the information?"]
+                        },
+                        evaluation: {
+                            criteria: [
+                                { name: "Clarity", points: 3, description: "Is your question clear and specific?" },
+                                { name: "Relevance", points: 3, description: "Does it show understanding of RTI?" },
+                                { name: "Creativity", points: 2, description: "Did you think of something interesting?" },
+                                { name: "Length", points: 2, description: "100-300 words as requested?" }
+                            ],
+                            totalPoints: 10
+                        },
+                        bonusXP: {
+                            bonus1: "+5 XP if you share your story with 3 friends",
+                            bonus2: "+10 XP if you actually file the RTI later!",
+                            bonus3: "+15 XP if you tell us what information you got back"
+                        },
+                        reward: { badge: "RTI Storyteller", progressUpdate: "70% - Almost there!" },
+                        nextStep: {
+                            title: "Ready to Level Up?",
+                            message: "You've completed the RTI basics! Now try the practice challenge where you'll write an ACTUAL RTI letter!"
+                        }
+                    }
+                ]
+            }
         ]
     },
     {
@@ -152,11 +288,7 @@ export default [
         bgGradient: "from-emerald-50/50 to-emerald-100/30",
         order: 2,
         levels: [
-            { levelId: "201", title: "Water Crisis", x: 45, y: 10 },
-            { levelId: "202", title: "Food Security", x: 80, y: 30 },
-            { levelId: "203", title: "Shelter", x: 20, y: 50 },
-            { levelId: "204", title: "Healthcare", x: 60, y: 70 },
-            { levelId: "205", title: "Dignity", x: 40, y: 90 },
+            { title: "Water Crisis", x: 45, y: 10, games: {} }
         ]
     },
     {
@@ -167,11 +299,7 @@ export default [
         bgGradient: "from-amber-50/50 to-amber-100/30",
         order: 3,
         levels: [
-            { levelId: "301", title: "Voice Up", x: 70, y: 10 },
-            { levelId: "302", title: "Debate", x: 30, y: 30 },
-            { levelId: "303", title: "Expression", x: 85, y: 50 },
-            { levelId: "304", title: "The Press", x: 15, y: 70 },
-            { levelId: "305", title: "Freedom", x: 50, y: 90 },
+            { title: "Voice Up", x: 70, y: 10, games: {} }
         ]
     },
     {
@@ -182,11 +310,7 @@ export default [
         bgGradient: "from-sky-50/50 to-sky-100/30",
         order: 4,
         levels: [
-            { levelId: "401", title: "Who Am I?", x: 20, y: 10 },
-            { levelId: "402", title: "My Name", x: 60, y: 30 },
-            { levelId: "403", title: "Citizenship", x: 85, y: 50 },
-            { levelId: "404", title: "Belonging", x: 40, y: 70 },
-            { levelId: "405", title: "My Roots", x: 15, y: 90 },
+            { title: "Who Am I?", x: 20, y: 10, games: {} }
         ]
     },
     {
@@ -197,11 +321,7 @@ export default [
         bgGradient: "from-green-50/50 to-green-100/30",
         order: 5,
         levels: [
-            { levelId: "501", title: "Family Tree", x: 70, y: 10 },
-            { levelId: "502", title: "Care & Love", x: 30, y: 30 },
-            { levelId: "503", title: "Reunion", x: 10, y: 50 },
-            { levelId: "504", title: "Support", x: 50, y: 70 },
-            { levelId: "505", title: "Harmony", x: 80, y: 90 },
+            { title: "Family Tree", x: 70, y: 10, games: {} }
         ]
     },
     {
@@ -212,11 +332,7 @@ export default [
         bgGradient: "from-red-50/50 to-red-100/30",
         order: 6,
         levels: [
-            { levelId: "601", title: "Checkup", x: 40, y: 10 },
-            { levelId: "602", title: "Nutrition", x: 80, y: 30 },
-            { levelId: "603", title: "Hygiene", x: 50, y: 50 },
-            { levelId: "604", title: "Exercise", x: 20, y: 70 },
-            { levelId: "605", title: "Wellbeing", x: 60, y: 90 },
+            { title: "Checkup", x: 40, y: 10, games: {} }
         ]
     },
     {
@@ -227,11 +343,7 @@ export default [
         bgGradient: "from-yellow-50/50 to-yellow-100/30",
         order: 7,
         levels: [
-            { levelId: "701", title: "School Day", x: 30, y: 10 },
-            { levelId: "702", title: "Teachers", x: 70, y: 30 },
-            { levelId: "703", title: "Library", x: 20, y: 50 },
-            { levelId: "704", title: "Science Lab", x: 60, y: 70 },
-            { levelId: "705", title: "Graduation", x: 90, y: 90 },
+            { title: "School Day", x: 30, y: 10, games: {} }
         ]
     },
     {
@@ -242,11 +354,7 @@ export default [
         bgGradient: "from-purple-50/50 to-purple-100/30",
         order: 8,
         levels: [
-            { levelId: "801", title: "Fair Play", x: 50, y: 10 },
-            { levelId: "802", title: "No Bullying", x: 20, y: 30 },
-            { levelId: "803", title: "Inclusion", x: 80, y: 50 },
-            { levelId: "804", title: "Respect", x: 40, y: 70 },
-            { levelId: "805", title: "Unity", x: 60, y: 90 },
+            { title: "Fair Play", x: 50, y: 10, games: {} }
         ]
     },
     {
@@ -257,11 +365,7 @@ export default [
         bgGradient: "from-indigo-50/50 to-indigo-100/30",
         order: 9,
         levels: [
-            { levelId: "901", title: "My Diary", x: 75, y: 10 },
-            { levelId: "902", title: "Online Safety", x: 35, y: 30 },
-            { levelId: "903", title: "Secrets", x: 65, y: 50 },
-            { levelId: "904", title: "Boundaries", x: 20, y: 70 },
-            { levelId: "905", title: "Security", x: 50, y: 90 },
+            { title: "My Diary", x: 75, y: 10, games: {} }
         ]
     },
     {
@@ -273,143 +377,33 @@ export default [
         order: 10,
         levels: [
             {
-                levelId: "1001",
                 title: "Safe Circle",
                 x: 30, y: 10,
                 games: {
                     drag: [
-                        { q: "Drag people who keep you safe", options: ["Parent", "Teacher", "Police", "Stranger"], a: ["Parent", "Teacher", "Police"] },
-                        { q: "Drag first helpers when scared", options: ["Parent", "Friend", "Stranger", "Teacher"], a: ["Parent", "Teacher"] }
+                        { q: "Drag people who keep you safe", options: ["Parent", "Teacher", "Police", "Stranger"], a: ["Parent", "Teacher", "Police"], xp: 10 },
+                        { q: "Drag first helpers when scared", options: ["Parent", "Friend", "Stranger", "Teacher"], a: ["Parent", "Teacher"], xp: 10 }
                     ],
                     situation: [
-                        { q: "Stranger offers gift to go with him", a: "Say no, tell adult" },
-                        { q: "Neighbor asks you to hide a secret", a: "Tell a trusted adult" }
+                        { q: "Stranger offers gift to go with him", a: "Say no, tell adult", xp: 15 },
+                        { q: "Neighbor asks you to hide a secret", a: "Tell a trusted adult", xp: 15 }
                     ],
                     tap: [
-                        { q: "Who should you trust?", a: "Teacher" },
-                        { q: "Best person to tell about danger?", a: "Parent" }
+                        { q: "Who should you trust?", a: "Teacher", xp: 5 },
+                        { q: "Best person to tell about danger?", a: "Parent", xp: 5 }
                     ],
                     story: [
-                        { q: "Riya scared walking home", a: "Call trusted adult" },
-                        { q: "Child feels followed", a: "Go to safe place, call adult" }
+                        { q: "Riya scared walking home", a: "Call trusted adult", xp: 20 },
+                        { q: "Child feels followed", a: "Go to safe place, call adult", xp: 20 }
                     ],
                     time: [
-                        { q: "Tap safe choices", a: ["Parents", "Friends", "Teacher"] },
-                        { q: "Tap danger actions", a: ["Block stranger", "Go to crowd"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1002",
-                title: "Say No",
-                x: 70, y: 30,
-                games: {
-                    drag: [
-                        { q: "Courage actions", a: ["Say No", "Tell teacher"] },
-                        { q: "Safe reactions", a: ["Walk away", "Speak up"] }
-                    ],
-                    situation: [
-                        { q: "Touched without permission", a: "Move away, tell adult" },
-                        { q: "Forced to hug", a: "Say no, inform parent" }
-                    ],
-                    tap: [
-                        { q: "Okay to say no to elders?", a: "Yes" },
-                        { q: "Can you refuse if scared?", a: "Yes" }
-                    ],
-                    story: [
-                        { q: "Cousin hugs forcefully", a: "Say no, inform" },
-                        { q: "Friend pressures you", a: "Set boundary, tell adult" }
-                    ],
-                    time: [
-                        { q: "Tap safety", a: ["Say No", "Walk away", "Tell adult"] },
-                        { q: "Tap courage", a: ["Speak up", "Get help"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1003",
-                title: "Help Line",
-                x: 40, y: 50,
-                games: {
-                    drag: [
-                        { q: "Match help", a: { Unsafe: "1098", Bullying: "Teacher" } },
-                        { q: "Match threat", a: { "Online threat": "Parent", Lost: "Police" } }
-                    ],
-                    situation: [
-                        { q: "Unsafe at home", a: "Call 1098" },
-                        { q: "No adult nearby", a: "Call emergency help" }
-                    ],
-                    tap: [
-                        { q: "Child danger number?", a: "1098" },
-                        { q: "First help call?", a: "Parent/Teacher" }
-                    ],
-                    story: [
-                        { q: "Alone and scared", a: "Call 1098" },
-                        { q: "Hurt and locked", a: "Call helpline" }
-                    ],
-                    time: [
-                        { q: "Tap support", a: ["1098", "Parent", "Teacher"] },
-                        { q: "Tap emergency", a: ["Police", "Helpline"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1004",
-                title: "Guardian",
-                x: 80, y: 70,
-                games: {
-                    drag: [
-                        { q: "Protectors", a: ["Parent", "Police", "Counselor"] },
-                        { q: "School helpers", a: ["Teacher", "Principal"] }
-                    ],
-                    situation: [
-                        { q: "Friend bullied", a: "Tell trusted adult" },
-                        { q: "Online threat", a: "Report to adult" }
-                    ],
-                    tap: [
-                        { q: "Guardian at school?", a: "Teacher" },
-                        { q: "Who protects children?", a: "Police" }
-                    ],
-                    story: [
-                        { q: "Rahul hides problem", a: "Speak to teacher" },
-                        { q: "Child afraid", a: "Talk to counselor" }
-                    ],
-                    time: [
-                        { q: "Tap helpers", a: ["Parents", "Teachers", "Police"] },
-                        { q: "Tap protectors", a: ["Counselor", "Principal"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1005",
-                title: "Shield",
-                x: 50, y: 90,
-                games: {
-                    drag: [
-                        { q: "Unsafe online", a: ["Share password"] },
-                        { q: "Safe action", a: ["Block stranger"] }
-                    ],
-                    situation: [
-                        { q: "Asked for photo", a: "Don’t send, tell adult" },
-                        { q: "Unknown link", a: "Don’t click, report" }
-                    ],
-                    tap: [
-                        { q: "Share passwords?", a: "No" },
-                        { q: "Click unknown links?", a: "No" }
-                    ],
-                    story: [
-                        { q: "Strange messages", a: "Block, report" },
-                        { q: "Threat online", a: "Tell parent" }
-                    ],
-                    time: [
-                        { q: "Tap cyber-safe", a: ["Block", "Report", "Tell parents"] },
-                        { q: "Tap danger", a: ["Ignore message", "Log out"] }
+                        { q: "Tap safe choices", a: ["Parents", "Friends", "Teacher"], xp: 25 },
+                        { q: "Tap danger actions", a: ["Block stranger", "Go to crowd"], xp: 25 }
                     ]
                 }
             }
         ]
     },
-
     {
         id: "peace-pavilion",
         title: "Peace Pavilion",
@@ -419,143 +413,33 @@ export default [
         order: 11,
         levels: [
             {
-                levelId: "1101",
                 title: "Calm Mind",
                 x: 60, y: 10,
                 games: {
                     drag: [
-                        { q: "Calm", a: ["Breathe", "Count"] },
-                        { q: "Relax", a: ["Walk away"] }
+                        { q: "Calm", a: ["Breathe", "Count"], xp: 10 },
+                        { q: "Relax", a: ["Walk away"], xp: 10 }
                     ],
                     situation: [
-                        { q: "Angry", a: "Deep breaths" },
-                        { q: "Upset", a: "Talk calmly" }
+                        { q: "Angry", a: "Deep breaths", xp: 15 },
+                        { q: "Upset", a: "Talk calmly", xp: 15 }
                     ],
                     tap: [
-                        { q: "Best calm?", a: "Breathe" },
-                        { q: "Anger control?", a: "Count to 10" }
+                        { q: "Best calm?", a: "Breathe", xp: 5 },
+                        { q: "Anger control?", a: "Count to 10", xp: 5 }
                     ],
                     story: [
-                        { q: "Angry in class", a: "Calm down" },
-                        { q: "Frustrated", a: "Take break" }
+                        { q: "Angry in class", a: "Calm down", xp: 20 },
+                        { q: "Frustrated", a: "Take break", xp: 20 }
                     ],
                     time: [
-                        { q: "Tap calm", a: ["Breathe", "Sit"] },
-                        { q: "Tap relax", a: ["Walk", "Drink water"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1102",
-                title: "Dialogue",
-                x: 20, y: 30,
-                games: {
-                    drag: [
-                        { q: "Good talk", a: ["Listen", "Speak"] },
-                        { q: "Respect", a: ["Polite words"] }
-                    ],
-                    situation: [
-                        { q: "Pencil taken", a: "Talk calmly" },
-                        { q: "Misunderstanding", a: "Explain" }
-                    ],
-                    tap: [
-                        { q: "Best solution?", a: "Talk" },
-                        { q: "Solve fight?", a: "Discuss" }
-                    ],
-                    story: [
-                        { q: "Friends argue", a: "Talk" },
-                        { q: "Team conflict", a: "Share views" }
-                    ],
-                    time: [
-                        { q: "Tap peace", a: ["Talk", "Smile"] },
-                        { q: "Tap calm", a: ["Listen"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1103",
-                title: "Friendship",
-                x: 80, y: 50,
-                games: {
-                    drag: [
-                        { q: "Friendly", a: ["Share", "Help"] },
-                        { q: "Kind", a: ["Support"] }
-                    ],
-                    situation: [
-                        { q: "New student", a: "Sit with" },
-                        { q: "Lonely", a: "Invite" }
-                    ],
-                    tap: [
-                        { q: "Builds friendship?", a: "Kind words" },
-                        { q: "Best friend act?", a: "Help" }
-                    ],
-                    story: [
-                        { q: "Child lonely", a: "Include" },
-                        { q: "Left out", a: "Support" }
-                    ],
-                    time: [
-                        { q: "Tap kindness", a: ["Share"] },
-                        { q: "Tap care", a: ["Help"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1104",
-                title: "Tolerance",
-                x: 40, y: 70,
-                games: {
-                    drag: [
-                        { q: "Respect", a: ["Welcome"] },
-                        { q: "Accept", a: ["Listen"] }
-                    ],
-                    situation: [
-                        { q: "Different language", a: "Be kind" },
-                        { q: "New culture", a: "Learn" }
-                    ],
-                    tap: [
-                        { q: "Best reaction?", a: "Respect" },
-                        { q: "Fair choice?", a: "Accept" }
-                    ],
-                    story: [
-                        { q: "New culture", a: "Learn" },
-                        { q: "Different habits", a: "Respect" }
-                    ],
-                    time: [
-                        { q: "Tap respect", a: ["Welcome"] },
-                        { q: "Tap tolerance", a: ["Listen"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1105",
-                title: "Harmony",
-                x: 70, y: 90,
-                games: {
-                    drag: [
-                        { q: "Teamwork", a: ["Share"] },
-                        { q: "Cooperation", a: ["Help"] }
-                    ],
-                    situation: [
-                        { q: "Teams fight", a: "Take turns" },
-                        { q: "Game clash", a: "Share time" }
-                    ],
-                    tap: [
-                        { q: "Best solution?", a: "Share" },
-                        { q: "Peace option?", a: "Compromise" }
-                    ],
-                    story: [
-                        { q: "Playground issue", a: "Agree" },
-                        { q: "Group fight", a: "Resolve" }
-                    ],
-                    time: [
-                        { q: "Tap harmony", a: ["Share"] },
-                        { q: "Tap teamwork", a: ["Help"] }
+                        { q: "Tap calm", a: ["Breathe", "Sit"], xp: 25 },
+                        { q: "Tap relax", a: ["Walk", "Drink water"], xp: 25 }
                     ]
                 }
             }
         ]
     },
-
     {
         id: "justice-jungle",
         title: "Justice Jungle",
@@ -565,143 +449,33 @@ export default [
         order: 12,
         levels: [
             {
-                levelId: "1201",
                 title: "The Rules",
                 x: 40, y: 10,
                 games: {
                     drag: [
-                        { q: "Fair", a: ["Wait"] },
-                        { q: "Unfair", a: ["Cheat"] }
+                        { q: "Fair", a: ["Wait"], xp: 10 },
+                        { q: "Unfair", a: ["Cheat"], xp: 10 }
                     ],
                     situation: [
-                        { q: "Rule broken", a: "Tell teacher" },
-                        { q: "Cheating", a: "Report" }
+                        { q: "Rule broken", a: "Tell teacher", xp: 15 },
+                        { q: "Cheating", a: "Report", xp: 15 }
                     ],
                     tap: [
-                        { q: "Rules for?", a: "Safety" },
-                        { q: "Why rules?", a: "Fairness" }
+                        { q: "Rules for?", a: "Safety", xp: 5 },
+                        { q: "Why rules?", a: "Fairness", xp: 5 }
                     ],
                     story: [
-                        { q: "Class rules", a: "Follow" },
-                        { q: "New rule", a: "Respect" }
+                        { q: "Class rules", a: "Follow", xp: 20 },
+                        { q: "New rule", a: "Respect", xp: 20 }
                     ],
                     time: [
-                        { q: "Tap fair", a: ["Share"] },
-                        { q: "Tap right", a: ["Wait turn"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1202",
-                title: "Fair Trial",
-                x: 80, y: 30,
-                games: {
-                    drag: [
-                        { q: "Steps", a: ["Listen"] },
-                        { q: "Process", a: ["Hear both"] }
-                    ],
-                    situation: [
-                        { q: "Argument", a: "Listen both" },
-                        { q: "Blame", a: "Check facts" }
-                    ],
-                    tap: [
-                        { q: "First step?", a: "Listen" },
-                        { q: "Fair start?", a: "Hear sides" }
-                    ],
-                    story: [
-                        { q: "Broken window", a: "Teacher listens" },
-                        { q: "Fight", a: "Judge fairly" }
-                    ],
-                    time: [
-                        { q: "Tap fair", a: ["Listen"] },
-                        { q: "Tap justice", a: ["Decide calmly"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1203",
-                title: "Advocacy",
-                x: 30, y: 50,
-                games: {
-                    drag: [
-                        { q: "Brave", a: ["Speak up"] },
-                        { q: "Support", a: ["Help friend"] }
-                    ],
-                    situation: [
-                        { q: "Friend blamed", a: "Tell teacher" },
-                        { q: "Bullying", a: "Report" }
-                    ],
-                    tap: [
-                        { q: "Should you speak?", a: "Yes" },
-                        { q: "Stay silent?", a: "No" }
-                    ],
-                    story: [
-                        { q: "Treated unfairly", a: "Support" },
-                        { q: "Wrong blame", a: "Speak" }
-                    ],
-                    time: [
-                        { q: "Tap courage", a: ["Speak"] },
-                        { q: "Tap help", a: ["Assist"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1204",
-                title: "Rights",
-                x: 70, y: 70,
-                games: {
-                    drag: [
-                        { q: "Rights", a: ["Education"] },
-                        { q: "Safety", a: ["Protection"] }
-                    ],
-                    situation: [
-                        { q: "Forced work", a: "Report" },
-                        { q: "Denied school", a: "Tell adult" }
-                    ],
-                    tap: [
-                        { q: "Which is right?", a: "Education" },
-                        { q: "Child needs?", a: "Safety" }
-                    ],
-                    story: [
-                        { q: "Girl wants school", a: "Law helps" },
-                        { q: "Child unsafe", a: "Rights apply" }
-                    ],
-                    time: [
-                        { q: "Tap rights", a: ["School"] },
-                        { q: "Tap safety", a: ["Protection"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1205",
-                title: "Verdict",
-                x: 50, y: 90,
-                games: {
-                    drag: [
-                        { q: "Fair outcome", a: ["Guide"] },
-                        { q: "Justice", a: ["Explain"] }
-                    ],
-                    situation: [
-                        { q: "Mistake", a: "Explain" },
-                        { q: "Accident", a: "Forgive & teach" }
-                    ],
-                    tap: [
-                        { q: "Best justice?", a: "Fairness" },
-                        { q: "Right action?", a: "Help learn" }
-                    ],
-                    story: [
-                        { q: "Child errs", a: "Teacher guides" },
-                        { q: "Wrong done", a: "Correct gently" }
-                    ],
-                    time: [
-                        { q: "Tap fair", a: ["Explain"] },
-                        { q: "Tap kind", a: ["Help"] }
+                        { q: "Tap fair", a: ["Share"], xp: 25 },
+                        { q: "Tap right", a: ["Wait turn"], xp: 25 }
                     ]
                 }
             }
         ]
     },
-
     {
         id: "dream-domain",
         title: "Dream Domain",
@@ -711,137 +485,28 @@ export default [
         order: 13,
         levels: [
             {
-                levelId: "1301",
                 title: "My Hope",
                 x: 25, y: 10,
                 games: {
                     drag: [
-                        { q: "Dreams", a: ["Teacher"] },
-                        { q: "Goals", a: ["Doctor"] }
+                        { q: "Dreams", a: ["Teacher"], xp: 10 },
+                        { q: "Goals", a: ["Doctor"], xp: 10 }
                     ],
                     situation: [
-                        { q: "Wants future", a: "Study" },
-                        { q: "Big dream", a: "Practice" }
+                        { q: "Wants future", a: "Study", xp: 15 },
+                        { q: "Big dream", a: "Practice", xp: 15 }
                     ],
                     tap: [
-                        { q: "Best support?", a: "Education" },
-                        { q: "Grow dream?", a: "Learn" }
+                        { q: "Best support?", a: "Education", xp: 5 },
+                        { q: "Grow dream?", a: "Learn", xp: 5 }
                     ],
                     story: [
-                        { q: "Child dreams", a: "Keeps learning" },
-                        { q: "Fails once", a: "Tries again" }
+                        { q: "Child dreams", a: "Keeps learning", xp: 20 },
+                        { q: "Fails once", a: "Tries again", xp: 20 }
                     ],
                     time: [
-                        { q: "Tap dream", a: ["Study"] },
-                        { q: "Tap hope", a: ["Practice"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1302",
-                title: "Innovation",
-                x: 65, y: 30,
-                games: {
-                    drag: [
-                        { q: "Ideas", a: ["Clean water"] },
-                        { q: "Solutions", a: ["Recycle"] }
-                    ],
-                    situation: [
-                        { q: "School problem", a: "Suggest" },
-                        { q: "Dirty class", a: "Organize" }
-                    ],
-                    tap: [
-                        { q: "Best action?", a: "Think & act" },
-                        { q: "Solve issue?", a: "Plan" }
-                    ],
-                    story: [
-                        { q: "Dirty class", a: "Cleanup" },
-                        { q: "Broken tap", a: "Fix idea" }
-                    ],
-                    time: [
-                        { q: "Tap innovation", a: ["Suggest"] },
-                        { q: "Tap solution", a: ["Build"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1303",
-                title: "Leadership",
-                x: 90, y: 50,
-                games: {
-                    drag: [
-                        { q: "Traits", a: ["Help"] },
-                        { q: "Values", a: ["Listen"] }
-                    ],
-                    situation: [
-                        { q: "Leader needed", a: "Be fair" },
-                        { q: "Conflict", a: "Guide" }
-                    ],
-                    tap: [
-                        { q: "Good leader?", a: "Serve" },
-                        { q: "Real leader?", a: "Helps" }
-                    ],
-                    story: [
-                        { q: "Monitor helps", a: "Happy class" },
-                        { q: "Team lost", a: "Encourages" }
-                    ],
-                    time: [
-                        { q: "Tap leader", a: ["Help"] },
-                        { q: "Tap guide", a: ["Support"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1304",
-                title: "Change",
-                x: 35, y: 70,
-                games: {
-                    drag: [
-                        { q: "Good change", a: ["Plant trees"] },
-                        { q: "Clean", a: ["Pick litter"] }
-                    ],
-                    situation: [
-                        { q: "Litter", a: "Clean" },
-                        { q: "Waste", a: "Reduce" }
-                    ],
-                    tap: [
-                        { q: "Best choice?", a: "Act kindly" },
-                        { q: "Create change?", a: "Help" }
-                    ],
-                    story: [
-                        { q: "Clean drive", a: "Others join" },
-                        { q: "Save park", a: "Volunteers" }
-                    ],
-                    time: [
-                        { q: "Tap change", a: ["Clean"] },
-                        { q: "Tap good", a: ["Help"] }
-                    ]
-                }
-            },
-            {
-                levelId: "1305",
-                title: "Future",
-                x: 75, y: 90,
-                games: {
-                    drag: [
-                        { q: "Future habits", a: ["Save water"] },
-                        { q: "Green", a: ["Recycle"] }
-                    ],
-                    situation: [
-                        { q: "Food waste", a: "Share" },
-                        { q: "Power waste", a: "Switch off" }
-                    ],
-                    tap: [
-                        { q: "Best habit?", a: "Save resources" },
-                        { q: "Future care?", a: "Protect" }
-                    ],
-                    story: [
-                        { q: "Green city", a: "Children act" },
-                        { q: "Clean earth", a: "Everyone helps" }
-                    ],
-                    time: [
-                        { q: "Tap future", a: ["Save"] },
-                        { q: "Tap protect", "a": ["Recycle"] }
+                        { q: "Tap dream", a: ["Study"], xp: 25 },
+                        { q: "Tap hope", a: ["Practice"], xp: 25 }
                     ]
                 }
             }

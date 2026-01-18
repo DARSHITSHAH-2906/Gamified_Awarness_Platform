@@ -18,7 +18,14 @@ interface User {
     badges: string[];
     streak: { count: number; lastLogin: string };
     dailyQuests?: any[]; // Added dailyQuests
-    currency? : number;
+    currency?: number;
+    // New profile fields
+    location?: string;
+    bio?: string;
+    aboutMe?: string;
+    achievements?: { title: string; date: string; description: string }[];
+    topSkills?: string[];
+    volunteeringExperience?: { role: string; organization: string; startDate: string; endDate?: string; description: string }[];
 }
 
 interface AuthContextType {
@@ -39,16 +46,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                    // Verify token with backend
-                    const res = await authApi.verifyToken();
-                    const { user } = res.data;
-                    setUser(user);
-                } catch (error) {
-                    // If verification fails, clear auth
-                    console.error("Token verification failed", error);
-                    localStorage.removeItem('edu_user');
-                    setUser(null);
-                }
+                // Verify token with backend
+                const res = await authApi.verifyToken();
+                const { user } = res.data;
+                setUser(user);
+            } catch (error) {
+                // If verification fails, clear auth
+                console.error("Token verification failed", error);
+                localStorage.removeItem('edu_user_id');
+                // Cleanup old key if exists
+                localStorage.removeItem('edu_user');
+                setUser(null);
+            }
         };
         checkAuth();
     }, []);
@@ -57,7 +66,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         try {
             const res = await authApi.login(email, password);
             const { user } = res.data;
-            localStorage.setItem('edu_user', JSON.stringify(user));
+            localStorage.setItem('edu_user_id', user.id);
             setUser(user);
             toast.success(`Welcome back, ${user.username}!`);
             navigate('/dashboard');
@@ -81,7 +90,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             const res = await authApi.register(payload);
             const { user } = res.data;
 
-            localStorage.setItem('edu_user', JSON.stringify(user));
+            localStorage.setItem('edu_user_id', user.id);
             setUser(user);
             toast.success(`Welcome, ${user.username}! Your journey begins!`);
             navigate('/dashboard');
@@ -97,7 +106,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         try {
             await authApi.logout();
             setUser(null);
-            localStorage.removeItem('edu_user');
+            localStorage.removeItem('edu_user_id');
             toast.success('You have been logged out successfully!');
             navigate('/');
         } catch (error) {
@@ -108,8 +117,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     const updateUser = (userData: Partial<User>) => {
         setUser(prev => prev ? { ...prev, ...userData } : null);
-        const currentUser = JSON.parse(localStorage.getItem('edu_user') || '{}');
-        localStorage.setItem('edu_user', JSON.stringify({ ...currentUser, ...userData }));
     };
 
     return (

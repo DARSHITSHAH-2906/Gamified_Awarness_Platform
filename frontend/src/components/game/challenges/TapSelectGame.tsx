@@ -71,7 +71,7 @@ export const TapSelectGame = ({ data, onComplete }: TapSelectGameProps) => {
                 setLocked(true);
                 setFeedback({ text: "Found correctly! 🎉", type: "success" });
                 setTimeout(() => {
-                    onComplete(2);
+                    onComplete(3);
                 }, 1500);
             } else {
                 setTimeout(() => setFeedback(null), 1000);

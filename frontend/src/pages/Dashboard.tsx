@@ -19,8 +19,8 @@ const Dashboard = () => {
     const { user, updateUser } = useAuth();
     // Derived Stats from User Data
     const currentXP = user?.xp || 0;
-    const currentLevel = Math.floor(currentXP / 100) + 1;
-    const nextLevelXP = currentLevel * 60;
+    const currentLevel = Math.floor(currentXP / 30) + 1;
+    const nextLevelXP = currentLevel * 30;
     const streakCount = user?.streak?.count || 0;
     const accuracy = user?.accuracy || 0;
     const badgesCount = user?.badges?.length || 0;

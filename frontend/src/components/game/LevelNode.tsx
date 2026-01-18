@@ -47,12 +47,14 @@ export const LevelNode: React.FC<LevelNodeProps> = ({
                 status === 'locked' && 'bg-slate-400 border-slate-300',
                 status === 'unlocked' && "shadow-orange-500/50"
             )}>
-                {status === 'locked' ? (
+                {icon ? (
+                    icon
+                ) : status === 'locked' ? (
                     <Lock className="text-white" size={iconSize[size]} />
                 ) : status === 'completed' ? (
                     <Check className="text-white" size={iconSize[size]} />
                 ) : (
-                    icon || <Map className="text-white" size={iconSize[size]} />
+                    <Map className="text-white" size={iconSize[size]} />
                 )}
             </div>
 

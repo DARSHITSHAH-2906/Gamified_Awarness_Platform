@@ -71,7 +71,7 @@ export const HeroSection = ({
                                 <span className="text-dark-lighter font-bold">Progress to Level {currentLevel + 1}</span>
                                 <span className="text-primary font-bold">{currentXP} / {nextLevelXP} XP</span>
                             </div>
-                            <ProgressBar current={currentXP} max={nextLevelXP} showLabel={false} size="lg" />
+                            <ProgressBar current={currentXP % 30} max={30} showLabel={false} size="lg" />
                         </div>
                         <Link to="/dashboard/play?return=/dashboard" className="hidden md:block flex-shrink-0">
                             <GameButton variant="primary" size="md">

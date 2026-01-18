@@ -1,0 +1,143 @@
+{
+  "id": "rti-101",
+  "lawId": "rti",
+  "title": "RTI: Quest Begins",
+  "description": "Learn what the Right to Information is and how it helps you ask questions.",
+  "order": 1,
+  "recommendedAge": "10-12",
+  "difficulty": "easy",
+
+  "learningGoals": [
+    "Understand what RTI means",
+    "Know that any citizen can ask for information",
+    "Know that government must reply within 30 days"
+  ],
+
+  "video": {
+    "id": "rti-intro-v1",
+    "url": "https://cdn.edurights.io/videos/rti/rti_intro_priya_v1.mp4",
+    "durationSeconds": 50,
+    "thumbnailUrl": "https://cdn.edurights.io/thumbs/rti_intro.png",
+    "transcript": "Hi! I'm Priya. Have you ever wondered why the government does what it does? ...",
+    "keyPoints": [
+      "RTI is a law that lets citizens ask the government for information.",
+      "The government must answer within 30 days.",
+      "RTI is simple and for everyone."
+    ],
+    "language": "en",
+    "accent": "indian",
+    "subtitles": {
+      "enabled": true,
+      "languages": ["en"]
+    }
+  },
+
+  "games": [
+    {
+      "id": "rti-101-g1",
+      "type": "mcq",
+      "title": "What is RTI?",
+      "order": 1,
+      "required": true,
+      "instructions": "Pick the correct answer based on the video.",
+      "content": {
+        "questions": [
+          {
+            "q": "What does RTI allow you to do?",
+            "options": [
+              "Ask the government for information",
+              "Change any law",
+              "Skip school whenever you want"
+            ],
+            "correctIndex": 0,
+            "explanation": "RTI gives you the right to ask for information from public authorities."
+          }
+        ]
+      },
+      "xp": 5,
+      "passCriteria": { "minScorePercent": 100 },
+      "feedback": {
+        "onSuccess": "Nice! You remember what RTI is.",
+        "onFail": "Watch the video again and try once more."
+      }
+    },
+    {
+      "id": "rti-101-g2",
+      "type": "drag_drop",
+      "title": "RTI in 4 Steps",
+      "order": 2,
+      "required": true,
+      "instructions": "Arrange the steps in the correct order.",
+      "content": {
+        "mode": "order",
+        "items": [
+          { "id": "step1", "label": "WRITE your question", "correctPosition": 1 },
+          { "id": "step2", "label": "SEND it to the office", "correctPosition": 2 },
+          { "id": "step3", "label": "WAIT up to 30 days", "correctPosition": 3 },
+          { "id": "step4", "label": "GET your answer", "correctPosition": 4 }
+        ]
+      },
+      "xp": 8,
+      "passCriteria": { "minScorePercent": 75, "maxAttempts": 3 },
+      "feedback": {
+        "onSuccess": "Perfect! You know how RTI works now.",
+        "onFail": "Almost there. Think about what comes first and last."
+      }
+    },
+    {
+      "id": "rti-101-g3",
+      "type": "scenario",
+      "title": "Would You Use RTI?",
+      "order": 3,
+      "required": false,
+      "instructions": "Choose what you would do.",
+      "content": {
+        "scenarioText": "Your city park is being removed for a mall, and nobody explains why.",
+        "options": [
+          {
+            "text": "Use RTI to ask the municipal office why the decision was taken.",
+            "isCorrect": true,
+            "explanation": "Municipal bodies are public authorities, so you can use RTI."
+          },
+          {
+            "text": "Do nothing because you are a child.",
+            "isCorrect": false,
+            "explanation": "Children can also seek information with help from adults."
+          }
+        ]
+      },
+      "xp": 7,
+      "passCriteria": { "minScorePercent": 50 },
+      "feedback": {
+        "onSuccess": "Great choice! RTI helps you understand public decisions.",
+        "onFail": "Think again: RTI is for understanding government actions."
+      }
+    }
+  ],
+
+  "rewards": {
+    "totalXP": 20,
+    "badge": {
+      "id": "rti-rookie",
+      "name": "RTI Rookie",
+      "icon": "🎖️"
+    },
+    "unlocks": {
+      "nextLevelId": "rti-102",
+      "mapTokens": 50,
+      "characterSkinId": "priya-rti-guide"
+    }
+  },
+
+  "meta": {
+    "legalReference": {
+      "actName": "Right to Information Act, 2005",
+      "sections": ["Section 3", "Section 6", "Section 7"],
+      "notes": "Citizens have the right to information and public authorities must reply within 30 days."
+    },
+    "contentStatus": "approved",
+    "lastReviewedBy": "legal_team_1",
+    "lastReviewedAt": "2026-01-18T12:00:00Z",
+    "analyticsKey": "level_rti_101"
+  }
+}

@@ -58,4 +58,46 @@ export class UserController {
             res.status(500).json({ message: 'Error searching users' });
         }
     };
+
+    async getProfile(req: Request, res: Response) {
+        try {
+            const userId = (req as any).user.id;
+            const user = await User.findById(userId).select('-password');
+            if (!user) return res.status(404).json({ message: 'User not found' });
+            res.json(user);
+        } catch (error) {
+            res.status(500).json({ message: 'Error fetching profile' });
+        }
+    }
+
+    async updateProfile(req: Request, res: Response) {
+        try {
+            const userId = (req as any).user.id;
+            const updates = req.body;
+
+            // Whitelist allowed updates to prevent overwriting sensitive fields like xp, currency directly
+            const allowedUpdates = [
+                'location', 'bio', 'aboutMe', 'achievements',
+                'topSkills', 'volunteeringExperience', 'avatarId'
+            ];
+
+            const safeUpdates: any = {};
+            Object.keys(updates).forEach(key => {
+                if (allowedUpdates.includes(key)) {
+                    safeUpdates[key] = updates[key];
+                }
+            });
+
+            const user = await User.findByIdAndUpdate(
+                userId,
+                { $set: safeUpdates },
+                { new: true, runValidators: true }
+            ).select('-password');
+
+            if (!user) return res.status(404).json({ message: 'User not found' });
+            res.json(user);
+        } catch (error) {
+            res.status(500).json({ message: 'Error updating profile' });
+        }
+    }
 }

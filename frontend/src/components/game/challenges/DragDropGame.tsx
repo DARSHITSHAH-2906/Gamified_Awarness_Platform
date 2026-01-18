@@ -59,7 +59,7 @@ export const DragDropGame = ({ data, onComplete }: DragDropGameProps) => {
                 setTimeout(() => setFeedback(null), 1500);
 
                 if (newDropped.length === correctAnswers.length) {
-                    setTimeout(() => onComplete(4), 1000);
+                    setTimeout(() => onComplete(3), 1000);
                 }
             }
         } else {

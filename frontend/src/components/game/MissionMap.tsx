@@ -8,7 +8,8 @@ import { AvatarMarker } from './AvatarMarker';
 // import { AvatarMarker } from './AvatarMarker';
 
 interface LevelData {
-    levelId: string;
+    _id: string; // Changed from levelId
+    levelNumber: number; // Added
     title: string;
     status: 'locked' | 'unlocked' | 'completed';
     stars: number;
@@ -17,7 +18,7 @@ interface LevelData {
 }
 
 interface RegionData {
-    regionId: string;
+    _id: string; // Changed from regionId
     title: string;
     levels: LevelData[];
     themeColor: string;
@@ -26,6 +27,8 @@ interface RegionData {
 
 // Decorative component mapping
 const DECORATIONS: Record<string, any> = {
+    // We'll rely on index or title if needed later. 
+    // Keeping for safety but it might not match _id keys.
     'rti': Book,
     'rtbn': Heart,
     'rts': Zap,
@@ -60,13 +63,13 @@ export const MissionMap = () => {
 
                 const mergedRegions = mapData.map((region: any) => {
                     const levels = region.levels.map((level: any) => {
-                        // Ensure stringent string matching
-                        // User progress stores levelId as ObjectId, Map Data level has _id as ObjectId
+                        // User progress stores levelId as ObjectId
                         const prog = userProgress.find((p: any) => String(p.levelId) === String(level._id));
                         let status = prog ? prog.status : 'locked';
                         let stars = prog ? prog.stars : 0;
 
-                        if ((!prog || status === 'locked') && String(level.levelId) === '101') {
+                        // Check for Level 1 (using levelNumber)
+                        if ((!prog || status === 'locked') && level.levelNumber === 1) {
                             status = 'unlocked';
                         }
 
@@ -123,21 +126,19 @@ export const MissionMap = () => {
     regions.forEach((r, rIdx) => {
         r.levels.forEach(l => {
             // We look for the "current" active level (unlocked or completed)
-            // If the user has just started, Level 101 is unlocked, so this logic picks it up immediately.
-            if (l.status === 'unlocked' || l.status === 'completed') {
-                const lid = parseInt(l.levelId);
+            const lNum = l.levelNumber; // Use levelNumber
 
-                // We want the highest unlocked level to place the avatar
-                if (lid > highestLevelId) {
-                    highestLevelId = lid;
+            // We want the highest unlocked level to place the avatar
+            if (lNum > highestLevelId) {
+                highestLevelId = lNum;
 
-                    // Calculate GLOBAL Y for this position
-                    const regionStartPct = rIdx * REGION_HEIGHT_PERCENT;
-                    const globalY = regionStartPct + (l.y * (REGION_HEIGHT_PERCENT / 100));
+                // Calculate GLOBAL Y for this position
+                const regionStartPct = rIdx * REGION_HEIGHT_PERCENT;
+                const globalY = regionStartPct + (l.y * (REGION_HEIGHT_PERCENT / 100));
 
-                    currentLevelPos = { x: l.x, y: globalY, regionIdx: rIdx };
-                }
+                currentLevelPos = { x: l.x, y: globalY, regionIdx: rIdx };
             }
+            
         });
     });
 
@@ -151,10 +152,12 @@ export const MissionMap = () => {
 
             {/* Region Background Zones */}
             {regions.map((region, idx) => {
-                const DecoIcon = DECORATIONS[region.regionId] || MapPin;
+                const DecoIcon = MapPin; // Fallback since mapping by regionId string is tricky now
+                // Alternatively, we could update the backend to send 'key' or rely on order. 
+                // For now, simpler is better to avoid errors.
                 return (
                     <div
-                        key={`bg-${region.regionId}`}
+                        key={`bg-${region._id}`}
                         className="absolute w-full -skew-y-1 transform origin-left border-b-4 border-white/30"
                         style={{
                             height: `${REGION_HEIGHT_PERCENT + 1}%`, // Slight overlap
@@ -228,7 +231,7 @@ export const MissionMap = () => {
                     }
 
                     return (
-                        <g key={region.regionId}>
+                        <g key={region._id}>
                             {/* Base Track (White + Shadow) */}
                             <path
                                 d={`M ${points}`}
@@ -313,33 +316,15 @@ export const MissionMap = () => {
                 };
 
                 return (
-                    <div key={region.regionId} className="absolute w-full h-full inset-0 pointer-events-none">
+                    <div key={region._id} className="absolute w-full h-full inset-0 pointer-events-none">
                         {/* Region Label */}
-                        <div
-                            className="absolute pointer-events-auto transform transition-transform hover:scale-105 z-20"
-                            style={{
-                                left: '2%',
-                                top: `${regionStartPct + 2}%`,
-                            }}
-                        >
-                            <div className="flex items-center gap-3 bg-white/90 backdrop-blur-md px-6 py-4 rounded-3xl shadow-lg border-b-4 border-r-4" style={{ borderColor: region.themeColor }}>
-                                <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-inner" style={{ backgroundColor: region.themeColor }}>
-                                    <Cloud size={24} fill="currentColor" className="text-white/80" />
-                                </div>
-                                <div>
-                                    <h3 className="font-display font-extrabold text-xl leading-none" style={{ color: region.themeColor }}>
-                                        {region.title}
-                                    </h3>
-                                    <div className="text-xs font-black uppercase tracking-widest text-slate-400 mt-1">Region {idx + 1}</div>
-                                </div>
-                            </div>
-                        </div>
+                        {/* Region Label Removed */}
 
                         {/* Level Nodes */}
                         {region.levels.map((level) => (
                             <div
-                                key={level.levelId}
-                                className="absolute transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-auto"
+                                key={level._id} // Use _id
+                                className="absolute transform -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-auto flex items-center gap-4"
                                 style={{
                                     left: `${level.x}%`,
                                     top: `${getGlobalY(level.y)}%`
@@ -349,14 +334,21 @@ export const MissionMap = () => {
                                     status={level.status}
                                     stars={level.stars}
                                     label={level.title}
-                                    onClick={() => handlePlayLevel(level.levelId)}
+                                    onClick={() => handlePlayLevel(level._id)} // Pass _id
                                     size="md"
                                     icon={
                                         <span className="font-fredoka font-bold text-white text-xl drop-shadow-md">
-                                            {idx * 5 + parseInt(level.levelId.slice(-1))}
+                                            {level.levelNumber}
                                         </span>
                                     }
                                 />
+
+                                {/* Region Name Label on the Side */}
+                                <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-lg border-2 shadow-sm whitespace-nowrap hidden md:block" style={{ borderColor: region.themeColor }}>
+                                    <span className="text-xs font-bold uppercase tracking-wider" style={{ color: region.themeColor }}>
+                                        {region.title}
+                                    </span>
+                                </div>
                             </div>
                         ))}
                     </div>

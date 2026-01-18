@@ -2,7 +2,11 @@ import axios from 'axios';
 
 const Backend_URL = process.env.Backend_URL || 'http://localhost:5000/api';
 const api = axios.create({
+<<<<<<< Updated upstream
     baseURL: Backend_URL,
+=======
+    baseURL: import.meta.env.VITE_BASE_URL,
+>>>>>>> Stashed changes
     withCredentials: true
 });
 

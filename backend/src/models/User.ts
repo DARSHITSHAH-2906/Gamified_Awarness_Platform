@@ -38,6 +38,22 @@ export interface IUser extends Document {
         dailyKudosCount: number;
         lastKudosDate: Date;
     };
+    location: string;
+    bio: string;
+    aboutMe: string;
+    achievements: {
+        title: string;
+        date: Date;
+        description: string;
+    }[];
+    topSkills: string[];
+    volunteeringExperience: {
+        role: string;
+        organization: string;
+        startDate: Date;
+        endDate?: Date;
+        description: string;
+    }[];
     createdAt: Date;
 }
 
@@ -65,7 +81,7 @@ const UserSchema: Schema = new Schema({
         lastLogin: { type: Date, default: Date.now }
     },
     dailyQuests: [{
-        questId: { type: mongoose.Schema.Types.ObjectId, ref:'Users' ,required: true },
+        questId: { type: mongoose.Schema.Types.ObjectId, ref: 'Users', required: true },
         xpReward: { type: Number, default: 0 },
         progress: { type: Number, default: 0 },
         isClaimed: { type: Boolean, default: false },
@@ -76,7 +92,24 @@ const UserSchema: Schema = new Schema({
     social: {
         dailyKudosCount: { type: Number, default: 0 },
         lastKudosDate: { type: Date, default: Date.now }
-    }
+    },
+    // proper profile fields
+    location: { type: String, default: '' },
+    bio: { type: String, default: '' },
+    aboutMe: { type: String, default: '' },
+    achievements: [{
+        title: { type: String, required: true },
+        date: { type: Date, default: Date.now },
+        description: { type: String, default: '' }
+    }],
+    topSkills: [{ type: String }],
+    volunteeringExperience: [{
+        role: { type: String, required: true },
+        organization: { type: String, required: true },
+        startDate: { type: Date, required: true },
+        endDate: { type: Date },
+        description: { type: String, default: '' }
+    }]
 }, {
     timestamps: true
 });

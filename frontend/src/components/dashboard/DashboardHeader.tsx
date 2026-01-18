@@ -20,7 +20,7 @@ export const DashboardHeader = ({ username, currentXP, currentLevel, avatarId }:
         >
             <div>
                 <h1 className="text-3xl lg:text-4xl font-display font-bold text-dark mb-1">
-                    Welcome back, <Link to="/profile"><span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">{username || 'Hero'}!</span></Link>
+                    Welcome back, <Link to="profile"><span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">{username || 'Hero'}!</span></Link>
                 </h1>
                 <p className="text-dark-lighter font-nunito font-medium">Ready for today's adventure?</p>
             </div>

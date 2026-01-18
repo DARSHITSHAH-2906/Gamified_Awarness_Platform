@@ -12,7 +12,7 @@ interface MazeContextType {
     isLoading: boolean;
     activePuzzle: string | null;
     solvedPuzzles: string[];
-    generateNewMaze: (config: MazeConfig, levelId?: string) => void;
+    generateNewMaze: (config: MazeConfig, levelId?: string, challenges?: any[]) => void;
     movePlayer: (direction: Direction) => void;
     checkCollision: (x: number, y: number, direction: Direction) => boolean;
     solvePuzzle: (puzzleId: string) => Promise<void>;
@@ -31,7 +31,7 @@ export const MazeProvider: React.FC<{ children: React.ReactNode; onComplete?: ()
     const [activePuzzle, setActivePuzzle] = useState<string | null>(null);
     const [solvedPuzzles, setSolvedPuzzles] = useState<string[]>([]);
 
-    const generateNewMaze = (config: MazeConfig, levelId?: string) => {
+    const generateNewMaze = (config: MazeConfig, levelId?: string, challenges?: any[]) => {
         setIsLoading(true);
         setCurrentLevelId(levelId || null);
         setSolvedPuzzles([]); // Reset solved puzzles for new maze
@@ -42,8 +42,25 @@ export const MazeProvider: React.FC<{ children: React.ReactNode; onComplete?: ()
             const generator = new MazeGenerator(config);
             const newMaze = generator.generate();
 
-            // Prefix Puzzle IDs with Level ID for Uniqueness
-            if (levelId) {
+            // Map actual Challenge IDs to the maze puzzles
+            if (challenges && challenges.length > 0) {
+                let challengeIndex = 0;
+                newMaze.grid.forEach(row => {
+                    row.forEach(cell => {
+                        if (cell.puzzleId) {
+                            // Assign actual Challenge _id
+                            if (challengeIndex < challenges.length) {
+                                cell.puzzleId = challenges[challengeIndex]._id;
+                                challengeIndex++;
+                            } else {
+                                // Let's remove extras to avoid confusion/duplicates if not intended
+                                cell.puzzleId = undefined;
+                            }
+                        }
+                    });
+                });
+            } else if (levelId) {
+                // Legacy fallback: Prefix Puzzle IDs with Level ID
                 newMaze.grid.forEach(row => {
                     row.forEach(cell => {
                         if (cell.puzzleId) {

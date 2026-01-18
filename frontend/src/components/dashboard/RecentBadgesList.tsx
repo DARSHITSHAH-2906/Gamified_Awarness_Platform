@@ -24,7 +24,7 @@ export const RecentBadgesList = ({ badges = [] }: RecentBadgesListProps) => {
                 </Link>
             </div>
 
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-4 gap-3 max-h-[300px] overflow-y-auto pr-1 custom-scrollbar">
                 {displayBadges.map((badge, index) => {
                     const Icon = badge.icon;
                     return (

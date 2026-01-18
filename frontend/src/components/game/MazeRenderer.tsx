@@ -53,12 +53,7 @@ export const MazeRenderer: React.FC = () => {
                         const isVisited = visitedCells.includes(`${x},${y}`);
                         const isStart = cell.type === 'start';
                         const isExit = cell.type === 'exit';
-
-                        // Logic for "Block" walls:
-                        // We use very thick borders. 
-                        // To make it look like a grid, every cell has a base border, 
-                        // but "Walls" are a different, high-contrast color (or transparent to show background).
-
+                        
                         return (
                             <div
                                 key={`${x}-${y}`}
