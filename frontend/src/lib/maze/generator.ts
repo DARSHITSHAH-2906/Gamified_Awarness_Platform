@@ -175,12 +175,6 @@ export class MazeGenerator {
     }
 
     private assignPuzzles(startX: number, startY: number) {
-        // Requirements: 2 Easy, 4 Moderate, 2 Hard
-        const puzzleConfig = [
-            { type: 'easy', count: 2 },
-            { type: 'moderate', count: 4 },
-            { type: 'hard', count: 2 }
-        ];
 
         // 1. Calculate true walking distance to every cell
         const distanceMap = this.calculateDistances(startX, startY);
@@ -200,9 +194,7 @@ export class MazeGenerator {
         this.grid.flat().forEach(cell => {
             if (cell.type === 'start' || cell.type === 'exit') return;
 
-            const dist = distanceMap.get(`${cell.x},${cell.y}`) || 0;
-            const isDeadEnd = Object.values(cell.walls).filter(w => w).length === 3;
-            
+            const dist = distanceMap.get(`${cell.x},${cell.y}`) || 0;            
             // Weight dead ends higher for selection by adding them multiple times or handling logic below
             // Here we just categorize strictly by distance zones.
             

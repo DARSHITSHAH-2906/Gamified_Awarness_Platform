@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Lock, CheckCircle2, Star, Play, BookOpen, Heart, Users, Shield, Mic, School, Stethoscope } from "lucide-react";
+import { Lock, CheckCircle2, Star, Play, BookOpen, Heart, Shield, Mic, School, Stethoscope } from "lucide-react";
 import { GameCard } from "@/components/ui/GameCard";
 import { GameBadge } from "@/components/ui/GameBadge";
 import { ProgressBar } from "@/components/ui/ProgressBar";
@@ -75,7 +75,7 @@ const topics = [
 
 export function TopicsPreview() {
     return (
-        <section className="py-24 px-4 bg-gradient-to-b from-indigo-50 to-amber-50">
+        <section className="py-24 px-4 bg-linear-to-b from-indigo-50 to-amber-50">
             <div className="container mx-auto">
                 <motion.div
                     className="text-center mb-16"
@@ -140,7 +140,7 @@ export function TopicsPreview() {
 
                                 {/* Icon */}
                                 <motion.div
-                                    className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${topic.color} flex items-center justify-center mb-4 shadow-lg`}
+                                    className={`w-16 h-16 rounded-2xl bg-linear-to-br ${topic.color} flex items-center justify-center mb-4 shadow-lg`}
                                     whileHover={{ scale: 1.1, rotate: 5 }}
                                 >
                                     <topic.icon size={32} className="text-white" />

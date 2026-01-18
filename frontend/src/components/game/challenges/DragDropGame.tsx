@@ -59,7 +59,7 @@ export const DragDropGame = ({ data, onComplete }: DragDropGameProps) => {
                 setTimeout(() => setFeedback(null), 1500);
 
                 if (newDropped.length === correctAnswers.length) {
-                    setTimeout(() => onComplete(3), 1000);
+                    setTimeout(() => onComplete(4), 1000);
                 }
             }
         } else {
@@ -73,8 +73,8 @@ export const DragDropGame = ({ data, onComplete }: DragDropGameProps) => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-start md:justify-center w-full h-full p-4 bg-gradient-to-b from-pink-50 to-white overflow-y-auto overflow-x-hidden font-sans">
-            <div className="relative w-full max-w-4xl flex flex-col gap-4 border-[6px] border-pink-200 rounded-[2rem] p-6 bg-gradient-to-b from-pink-50/50 to-white shadow-xl my-auto">
+        <div className="flex flex-col items-center justify-start md:justify-center w-full h-full p-4 bg-linear-to-b from-pink-50 to-white overflow-y-auto overflow-x-hidden font-sans">
+            <div className="relative w-full max-w-4xl flex flex-col gap-4 border-[6px] border-pink-200 rounded-4xl p-6 bg-linear-to-b from-pink-50/50 to-white shadow-xl my-auto">
                 <AnimatePresence>
                     {feedback && (
                         <motion.div
@@ -112,7 +112,7 @@ export const DragDropGame = ({ data, onComplete }: DragDropGameProps) => {
                             >
                                 <div className="w-24 h-24 md:w-28 md:h-28 bg-white rounded-2xl border-[3px] border-blue-300 shadow-[0_4px_0_#93c5fd] flex flex-col items-center justify-center p-3 hover:-translate-y-1 transition-transform">
                                     <span className="text-3xl md:text-4xl mb-1">🎯</span>
-                                    <span className="text-xs font-black text-blue-700 uppercase tracking-tighter text-center leading-tight break-words w-full">{item}</span>
+                                    <span className="text-xs font-black text-blue-700 uppercase tracking-tighter text-center leading-tight wrap-break-word w-full">{item}</span>
                                 </div>
                             </motion.div>
                         ))}
@@ -126,7 +126,7 @@ export const DragDropGame = ({ data, onComplete }: DragDropGameProps) => {
                     onDragOver={handleDragOver}
                     onDrop={handleDrop}
                     onDragLeave={handleDragLeave}
-                    className={`relative w-full min-h-[180px] rounded-[2rem] border-[4px] border-dashed flex flex-col items-center justify-center p-4 transition-colors
+                    className={`relative w-full min-h-[180px] rounded-4xl border-4 border-dashed flex flex-col items-center justify-center p-4 transition-colors
                     ${feedback?.type === 'success' ? 'border-green-400 bg-green-50' :
                             feedback?.type === 'error' ? 'border-red-400 bg-red-50' :
                                 'border-purple-300 bg-purple-50'}`}
@@ -144,7 +144,7 @@ export const DragDropGame = ({ data, onComplete }: DragDropGameProps) => {
                         {dropped.length === 0 ? (
                             <p className="text-purple-400 font-bold text-base animate-pulse">Drop answers here!</p>
                         ) : (
-                            dropped.map((item, index) => (
+                            dropped.map((item, ) => (
                                 <motion.div
                                     key={item}
                                     initial={{ scale: 0 }}

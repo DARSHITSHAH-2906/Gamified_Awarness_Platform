@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion, Reorder } from 'framer-motion';
-import { CheckCircle } from 'lucide-react';
 
 interface DragItem {
     id: string;

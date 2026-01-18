@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { duelApi } from '../lib/api';
 import DuelCard from '../components/duels/DuelCard';
 import CreateDuelModal from '../components/duels/CreateDuelModal';

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { BookOpen } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { GameCard } from "@/components/ui/GameCard";
-import { ProgressBar } from "@/components/ui/ProgressBar";
 import { gameApi } from "@/lib/api";
 
 const TopicsPage = () => {

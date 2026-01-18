@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Star, Trophy, ArrowRight, User } from 'lucide-react';
+import { Menu, X, Trophy, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 
@@ -19,7 +19,7 @@ const Navbar = () => {
                         {/* <Star className="text-white w-6 h-6 fill-current" /> */}
                         <img src="/logo.png" alt="Logo" className='w-full h-full rounded-full'/>
                     </div>
-                    <span className="text-2xl font-display font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    <span className="text-2xl font-display font-bold bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
                         EduRights
                     </span>
                 </Link>

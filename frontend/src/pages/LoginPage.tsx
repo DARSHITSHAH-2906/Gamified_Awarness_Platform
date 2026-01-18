@@ -18,7 +18,7 @@ const loginSchema = z.object({
 type LoginFormInputs = z.infer<typeof loginSchema>;
 
 const LoginPage = () => {
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams, ] = useSearchParams();
     const { login, isAuthenticated } = useAuth();
     const navigate = useNavigate();
     const [loginError, setLoginError] = useState<string | null>(null);

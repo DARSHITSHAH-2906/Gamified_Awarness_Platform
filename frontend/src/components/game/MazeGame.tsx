@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useMaze } from '../../context/MazeContext';
 import { MazeRenderer } from './MazeRenderer';
-import { GameButton } from '../ui/GameButton';
 import { ChallengeGame } from './challenges/ChallengeGame';
 import { gameApi } from '@/lib/api';
 import { AnimatePresence, motion } from 'framer-motion';
 
 interface MazeGameProps {
-    onClose?: () => void;
     levelId?: string;
 }
 
-export const MazeGame = ({ onClose, levelId }: MazeGameProps) => {
+export const MazeGame = ({ levelId }: MazeGameProps) => {
     const { generateNewMaze, activePuzzle, solvePuzzle, clearActivePuzzle } = useMaze();
     const [levelData, setLevelData] = useState<any>(null);
 

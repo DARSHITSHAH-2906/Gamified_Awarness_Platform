@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import type { Maze, MazeConfig, Coordinates, Direction } from '../types/maze';
 import { MazeGenerator } from '../lib/maze/generator';
 import { useAuth } from './AuthContext'; // Import useAuth

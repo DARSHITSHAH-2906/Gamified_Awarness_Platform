@@ -83,8 +83,8 @@ export const TapSelectGame = ({ data, onComplete }: TapSelectGameProps) => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-start md:justify-center w-full h-full p-4 bg-gradient-to-b from-emerald-50 to-white overflow-y-auto overflow-x-hidden relative">
-            <div className="max-w-4xl w-full flex flex-col gap-6 relative border-[6px] border-emerald-200 rounded-[2rem] p-6 bg-gradient-to-b from-emerald-50/50 to-white shadow-xl my-auto">
+        <div className="flex flex-col items-center justify-start md:justify-center w-full h-full p-4 bg-linear-to-b from-emerald-50 to-white overflow-y-auto overflow-x-hidden relative">
+            <div className="max-w-4xl w-full flex flex-col gap-6 relative border-[6px] border-emerald-200 rounded-4xl p-6 bg-linear-to-b from-emerald-50/50 to-white shadow-xl my-auto">
                 <AnimatePresence>
                     {feedback && (
                         <motion.div

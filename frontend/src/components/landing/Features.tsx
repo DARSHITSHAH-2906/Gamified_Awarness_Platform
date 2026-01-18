@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Gamepad2, Trophy, BookOpen, Users, Shield, Star, Puzzle, Target } from "lucide-react";
+import { Gamepad2, Trophy, BookOpen, Users, Star, Puzzle, Target } from "lucide-react";
 import { GameCard } from "@/components/ui/GameCard";
 
 const features = [
@@ -68,7 +68,7 @@ const itemVariants = {
 
 export function Features() {
     return (
-        <section className="py-24 px-4 bg-gradient-to-b from-sky-50 to-indigo-50">
+        <section className="py-24 px-4 bg-linear-to-b from-sky-50 to-indigo-50">
             <div className="container mx-auto">
                 <motion.div
                     className="text-center mb-16"

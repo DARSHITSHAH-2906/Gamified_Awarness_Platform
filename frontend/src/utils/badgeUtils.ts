@@ -1,4 +1,4 @@
-import { Shield, Star, Award, Zap, Crown, Target, Book } from 'lucide-react';
+import { Shield, Award, Zap, Target, Book } from 'lucide-react';
 
 export const BADGES: Record<string, any> = {
     'sharpshooter': {

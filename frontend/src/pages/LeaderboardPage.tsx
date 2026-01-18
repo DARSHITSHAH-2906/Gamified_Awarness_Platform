@@ -6,15 +6,11 @@ import { useAuth } from "@/context/AuthContext";
 import { GameCard } from "@/components/ui/GameCard";
 import { gameApi } from "@/lib/api";
 import { getAvatarSeed } from "@/utils/avatarUtils";
-import { useSearchParams } from "react-router-dom";
 
 const LeaderboardPage = () => {
     const { user } = useAuth();
-    const [searchParams, setSearchParams] = useSearchParams();
     const [leaderboardData, setLeaderboardData] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
-
-    const returnPath = searchParams.get('return') || '/';
 
     useEffect(() => {
         const fetchLeaderboard = async () => {
@@ -69,7 +65,7 @@ const LeaderboardPage = () => {
                                             alt={topThree[1].name}
                                             className="w-full h-full object-cover"
                                         />
-                                        <div className="absolute -bottom-0 bg-gray-500 text-white text-xs font-bold px-2 py-0.5 rounded-full z-10">2</div>
+                                        <div className="absolute bottom-0 bg-gray-500 text-white text-xs font-bold px-2 py-0.5 rounded-full z-10">2</div>
                                     </div>
                                     <p className="font-bold text-dark">{topThree[1].name}</p>
                                     <p className="text-sm text-primary font-bold">{topThree[1].xp} XP</p>
@@ -85,7 +81,7 @@ const LeaderboardPage = () => {
                                             alt={topThree[0].name}
                                             className="w-full h-full object-cover"
                                         />
-                                        <div className="absolute -bottom-0 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10">1</div>
+                                        <div className="absolute bottom-0 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10">1</div>
                                     </div>
                                     <p className="font-bold text-lg text-dark">{topThree[0].name}</p>
                                     <p className="text-primary font-bold">{topThree[0].xp} XP</p>
@@ -100,7 +96,7 @@ const LeaderboardPage = () => {
                                             alt={topThree[2].name}
                                             className="w-full h-full object-cover"
                                         />
-                                        <div className="absolute -bottom-0 bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded-full z-10">3</div>
+                                        <div className="absolute bottom-0 bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded-full z-10">3</div>
                                     </div>
                                     <p className="font-bold text-dark">{topThree[2].name}</p>
                                     <p className="text-sm text-primary font-bold">{topThree[2].xp} XP</p>

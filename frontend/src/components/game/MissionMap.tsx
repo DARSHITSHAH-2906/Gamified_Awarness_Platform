@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { LevelNode } from './LevelNode';
 import { gameApi } from '../../lib/api';
 import { useAuth } from '../../context/AuthContext';
-import { Flag, Cloud, Star, Trees, Heart, Shield, Book, Scale, Zap, MapPin } from 'lucide-react';
+import { Cloud, MapPin } from 'lucide-react';
 import { AvatarMarker } from './AvatarMarker';
 // import { AvatarMarker } from './AvatarMarker';
 
@@ -24,25 +24,6 @@ interface RegionData {
     themeColor: string;
     bgGradient?: string;
 }
-
-// Decorative component mapping
-const DECORATIONS: Record<string, any> = {
-    // We'll rely on index or title if needed later. 
-    // Keeping for safety but it might not match _id keys.
-    'rti': Book,
-    'rtbn': Heart,
-    'rts': Zap,
-    'identity-island': Flag,
-    'family-forest': Trees,
-    'health-haven': Heart,
-    'education-empire': Book,
-    'equality-expanse': Scale,
-    'privacy-peak': Shield,
-    'protection-paladin': Shield,
-    'peace-pavilion': Cloud,
-    'justice-jungle': Scale,
-    'dream-domain': Star
-};
 
 export const MissionMap = () => {
     const navigate = useNavigate();

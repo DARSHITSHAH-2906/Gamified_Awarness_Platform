@@ -121,7 +121,7 @@ export const TimeChallengeGame = ({ data, onComplete }: TimeChallengeGameProps) 
     const currentQ = questions[currentIndex];
 
     return (
-        <div className="flex flex-col items-center justify-start md:justify-center w-full h-full p-4 overflow-y-auto overflow-x-hidden bg-gradient-to-br from-[#fff5f0] via-white to-[#fff5f0]">
+        <div className="flex flex-col items-center justify-start md:justify-center w-full h-full p-4 overflow-y-auto overflow-x-hidden bg-linear-to-br from-[#fff5f0] via-white to-[#fff5f0]">
             {!gameStarted ? (
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -139,7 +139,7 @@ export const TimeChallengeGame = ({ data, onComplete }: TimeChallengeGameProps) 
                     </p>
                     <button
                         onClick={handleStartGame}
-                        className="bg-gradient-to-r from-[#ff6b35] to-[#ff8c42] text-white py-4 px-12 rounded-full text-xl font-bold uppercase shadow-lg hover:scale-105 transition-transform"
+                        className="bg-linear-to-r from-[#ff6b35] to-[#ff8c42] text-white py-4 px-12 rounded-full text-xl font-bold uppercase shadow-lg hover:scale-105 transition-transform"
                     >
                         Start Blitz
                     </button>

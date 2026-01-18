@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import { gameApi, socialApi } from '../lib/api';
 import UserCard from '../components/social/UserCard';
 import SocialActionsModal from '../components/social/SocialActionsModal';
@@ -66,7 +65,7 @@ const CommunityPage: React.FC = () => {
     return (
         <div className="p-6 max-w-7xl mx-auto">
             <header className="mb-8">
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                <h1 className="text-3xl font-bold bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                     Community
                 </h1>
                 <p className="text-gray-500 mt-2">Connect with peers, create duels, and share rewards.</p>
@@ -82,8 +81,8 @@ const CommunityPage: React.FC = () => {
                         <UserCard
                             key={u._id}
                             user={u}
-                            onKudos={(uid) => handleOpenAction(u, 'KUDOS')}
-                            onGift={(uid) => handleOpenAction(u, 'GIFT')}
+                            onKudos={() => handleOpenAction(u, 'KUDOS')}
+                            onGift={() => handleOpenAction(u, 'GIFT')}
                         />
                     ))}
                 </div>

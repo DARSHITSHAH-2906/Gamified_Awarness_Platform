@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export function CallToAction() {
     return (
-        <section className="py-24 px-4 relative overflow-hidden bg-gradient-to-br from-amber-100 via-orange-50 to-rose-50">
+        <section className="py-24 px-4 relative overflow-hidden bg-linear-to-br from-amber-100 via-orange-50 to-rose-50">
             {/* Background decoration */}
 
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5" />
@@ -55,7 +55,7 @@ export function CallToAction() {
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-fredoka font-bold mb-6">
                         <span className="text-dark">Ready to Become a </span>
                         <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">Rights Champion?</span>
+                        <span className="text-transparent bg-clip-text bg-linear-to-r from-primary via-secondary to-accent">Rights Champion?</span>
                     </h2>
 
                     <p className="text-lg sm:text-xl text-dark-lighter font-nunito mb-8 max-w-2xl mx-auto">

@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Fredoka:wght@300..700&display=swap');
 
 @import "tailwindcss";
-@config "../tailwind.config.js";
+/* @config "../tailwind.config.js"; */
 
 @layer base {
   * {
     border-color: hsl(var(--border));
   }
 
-  body {
+  /* body {
     @apply bg-background text-foreground font-nunito antialiased;
   }
 
@@ -19,7 +19,7 @@
   h5,
   h6 {
     @apply font-display tracking-widest;
-  }
+  } */
 }
 
 @layer base {
@@ -165,10 +165,10 @@
     border-color: hsl(var(--border));
   }
 
-  body {
+  /* body {
     @apply bg-background text-foreground font-nunito antialiased;
-  }
-
+  } */
+/* 
   h1,
   h2,
   h3,
@@ -176,13 +176,13 @@
   h5,
   h6 {
     @apply font-display tracking-widest;
-  }
+  } */
 }
 
 @layer components {
-  .btn-game {
+  /* .btn-game {
     @apply relative overflow-hidden rounded-2xl px-8 py-4 font-fredoka font-bold text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg;
-  }
+  } */
 
   .btn-game-primary {
     /* @apply btn-game bg-primary text-primary-foreground; */
@@ -200,7 +200,7 @@
   }
 
   .card-game {
-    @apply rounded-3xl p-6 transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1;
+    /* @apply rounded-3xl p-6 transition-all duration-300 transform hover:scale-[1.02] hover:-translate-y-1; */
     background: var(--gradient-card);
     box-shadow: var(--shadow-md);
   }
@@ -209,29 +209,29 @@
     box-shadow: var(--shadow-lg);
   }
 
-  .badge-game {
+  /* .badge-game {
     @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-nunito font-bold text-sm;
-  }
+  } */
 
   .progress-bar {
-    @apply h-4 rounded-full overflow-hidden;
+    /* @apply h-4 rounded-full overflow-hidden; */
     background: hsl(var(--muted));
   }
 
   .progress-bar-fill {
-    @apply h-full rounded-full transition-all duration-500 ease-out;
+    /* @apply h-full rounded-full transition-all duration-500 ease-out; */
     background: var(--gradient-xp);
   }
 
   .xp-display {
-    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full font-fredoka font-bold;
+    /* @apply inline-flex items-center gap-2 px-4 py-2 rounded-full font-fredoka font-bold; */
     background: var(--gradient-xp);
     color: hsl(var(--xp-foreground));
     box-shadow: 0 4px 12px hsl(40 100% 50% / 0.3);
   }
 
   .level-badge {
-    @apply inline-flex items-center justify-center w-12 h-12 rounded-full font-fredoka font-bold text-xl;
+    /* @apply inline-flex items-center justify-center w-12 h-12 rounded-full font-fredoka font-bold text-xl; */
     background: var(--gradient-level);
     color: white;
     box-shadow: 0 4px 16px hsl(280 80% 55% / 0.4);

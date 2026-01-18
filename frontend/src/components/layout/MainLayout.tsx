@@ -75,7 +75,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 {/* Topbar */}
                 <header className="h-20 bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-10 px-8 flex items-center justify-between">
                     <h1 className="text-2xl text-dark hidden md:block">
-                        Welcome back, <span className="text-primary">{user?.heroName || 'Hero'}</span>!
+                        Welcome back, <span className="text-primary">{user?.username || 'Hero'}</span>!
                     </h1>
 
                     <div className="flex items-center gap-6 ml-auto">
@@ -89,7 +89,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                                 <motion.div
                                     initial={{ width: 0 }}
                                     animate={{ width: `${(gameState.xp % 1000) / 10}%` }}
-                                    className="h-full bg-gradient-to-r from-primary to-accent"
+                                    className="h-full bg-linear-to-r from-primary to-accent"
                                 />
                             </div>
                         </div>

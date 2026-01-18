@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Play, Pause, CheckCircle, ArrowRight } from 'lucide-react';
+import { CheckCircle, ArrowRight } from 'lucide-react';
 
 interface VideoScriptSegment {
     timing: string;
@@ -23,14 +23,9 @@ interface VideoStoryGameProps {
 }
 
 export const VideoStoryGame = ({ data, onComplete }: VideoStoryGameProps) => {
-    const [isPlaying, setIsPlaying] = useState(false);
     const [step, setStep] = useState<'video' | 'quiz'>('video');
     const [selectedOption, setSelectedOption] = useState<number | null>(null);
     const [showFeedback, setShowFeedback] = useState(false);
-
-    const handlePlayParams = () => {
-        setIsPlaying(!isPlaying);
-    };
 
     const handleVideoComplete = () => {
         setStep('quiz');
@@ -55,7 +50,7 @@ export const VideoStoryGame = ({ data, onComplete }: VideoStoryGameProps) => {
                     className="w-full max-w-4xl bg-black rounded-3xl overflow-hidden shadow-2xl relative aspect-video flex items-center justify-center group"
                 >
                     {/* Placeholder for Video Content */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-black opacity-80" />
+                    <div className="absolute inset-0 bg-linear-to-br from-indigo-900 via-purple-900 to-black opacity-80" />
 
                     <div className="relative z-10 text-center text-white p-8">
                         <h2 className="text-3xl font-bold mb-4">{data.videoScript.title}</h2>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export function Hero() {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-5 py-20 bg-gradient-to-b from-amber-50 to-sky-50">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-5 py-20 bg-linear-to-b from-amber-50 to-sky-50">
             {/* Animated background elements */}
             <div className="absolute inset-0 overflow-hidden">
                 <motion.div
@@ -75,10 +75,10 @@ export function Hero() {
 
                         <h1 className="text-4xl sm:text-xl lg:text-6xl xl:text-7xl font-fredoka font-bold leading-tight mb-6">
                             <span className="text-dark">Learn Your </span>
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-500">Rights</span>
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-500 to-red-500">Rights</span>
                             <br />
                             <span className="text-dark">Through </span>
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">Play!</span>
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-sky-400 to-blue-600">Play!</span>
                         </h1>
 
                         <p className="text-lg sm:text-xl text-dark-lighter font-nunito mb-8 max-w-xl mx-auto lg:mx-0">
@@ -133,20 +133,20 @@ export function Hero() {
                         <div className="relative w-full aspect-square max-w-lg mx-auto">
                             {/* Main mascot container */}
                             <motion.div
-                                className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20"
+                                className="absolute inset-0 rounded-full bg-linear-to-br from-primary/20 via-secondary/20 to-accent/20"
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
                             />
 
                             {/* Central character area */}
                             <motion.div
-                                className="absolute inset-8 rounded-full bg-card shadow-lg flex items-center justify-center bg-neutral-50"
+                                className="absolute inset-8 rounded-full shadow-lg flex items-center justify-center bg-neutral-50"
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                             >
                                 <div className="text-center p-8">
                                     <motion.div
-                                        className="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 flex items-center justify-center shadow-glow-primary"
+                                        className="w-32 h-32 mx-auto mb-4 rounded-full bg-linear-to-br from-primary/20 via-secondary/20 to-accent/20 flex items-center justify-center shadow-glow-primary"
                                         whileHover={{ scale: 1.1, rotate: 10 }}
                                     >
                                         <Shield size={64} className="text-primary-foreground" />

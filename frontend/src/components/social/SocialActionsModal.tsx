@@ -31,7 +31,7 @@ const SocialActionsModal: React.FC<SocialActionsModalProps> = ({ isOpen, onClose
                     exit={{ scale: 0.9, opacity: 0 }}
                     className="bg-white dark:bg-slate-800 rounded-2xl p-6 w-full max-w-sm border border-white/20 shadow-xl"
                 >
-                    <h2 className="text-xl font-bold bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent mb-1">
+                    <h2 className="text-xl font-bold bg-linear-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent mb-1">
                         Send {type === 'KUDOS' ? 'Kudos' : 'a Gift'}
                     </h2>
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">to {recipientName}</p>

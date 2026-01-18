@@ -1,4 +1,3 @@
-import React from 'react';
 import Navbar from '../components/landing/Navbar';
 import { Hero } from '../components/landing/HeroScene';
 import { Features } from '../components/landing/Features';
@@ -8,7 +7,7 @@ import { Footer } from '../components/landing/Footer';
 
 const LandingPage = () => {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 overflow-x-hidden font-sans">
+        <div className="min-h-screen bg-linear-to-br from-amber-50 via-orange-50 to-yellow-50 overflow-x-hidden font-sans">
             <Navbar />
             <Hero />
             <div id="how-it-works">

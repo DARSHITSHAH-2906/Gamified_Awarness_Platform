@@ -43,7 +43,6 @@ const Register = () => {
         }
     });
 
-    const currentHeroName = watch('heroName');
     const currentAvatarId = watch('avatarId');
 
     const handleNext = async () => {

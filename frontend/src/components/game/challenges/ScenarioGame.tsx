@@ -69,7 +69,7 @@ export const ScenarioGame = ({ data, onComplete }: ScenarioGameProps) => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-start md:justify-center w-full h-full p-4 overflow-y-auto overflow-x-hidden bg-gradient-to-br from-[#fff5f0] via-white to-[#fff5f0]">
+        <div className="flex flex-col items-center justify-start md:justify-center w-full h-full p-4 overflow-y-auto overflow-x-hidden bg-linear-to-br from-[#fff5f0] via-white to-[#fff5f0]">
             <div className="max-w-3xl w-full flex flex-col gap-4 my-auto">
                 {/* Scenario Card */}
                 <motion.div
@@ -93,8 +93,8 @@ export const ScenarioGame = ({ data, onComplete }: ScenarioGameProps) => {
                             exit={{ opacity: 0, height: 0 }}
                             className={`flex items-center justify-center gap-3 py-3 px-6 rounded-xl text-lg font-bold shadow-lg
                             ${isCorrect
-                                    ? 'bg-gradient-to-br from-green-500 to-green-600 text-white border-2 border-green-600'
-                                    : 'bg-gradient-to-br from-red-500 to-red-600 text-white border-2 border-red-600 animate-shake'}`}
+                                    ? 'bg-linear-to-br from-green-500 to-green-600 text-white border-2 border-green-600'
+                                    : 'bg-linear-to-br from-red-500 to-red-600 text-white border-2 border-red-600 animate-shake'}`}
                         >
                             {isCorrect ? (
                                 <>
@@ -133,12 +133,12 @@ export const ScenarioGame = ({ data, onComplete }: ScenarioGameProps) => {
                                     disabled={showFeedback}
                                     className={`relative p-4 rounded-xl text-lg font-bold min-h-[70px] flex items-center justify-center text-center transition-all duration-300
                                     ${showCorrectState
-                                            ? 'bg-gradient-to-br from-green-500 to-green-400 text-white border-2 border-green-500 shadow-md scale-105'
+                                            ? 'bg-linear-to-br from-green-500 to-green-400 text-white border-2 border-green-500 shadow-md scale-105'
                                             : showWrongState
-                                                ? 'bg-gradient-to-br from-red-500 to-red-400 text-white border-2 border-red-500 shadow-md'
-                                                : 'bg-white border-[2px] border-[#ff8c42] text-gray-800 hover:bg-gradient-to-br hover:from-[#ff6b35] hover:to-[#ff8c42] hover:text-white hover:border-transparent hover:shadow-lg'
+                                                ? 'bg-linear-to-br from-red-500 to-red-400 text-white border-2 border-red-500 shadow-md'
+                                                : 'bg-white border-2 border-[#ff8c42] text-gray-800 hover:bg-linear-to-br hover:from-[#ff6b35] hover:to-[#ff8c42] hover:text-white hover:border-transparent hover:shadow-lg'
                                         }
-                                    ${isSelected && !showFeedback ? 'bg-gradient-to-br from-[#ff6b35] to-[#ff8c42] text-white' : ''}
+                                    ${isSelected && !showFeedback ? 'bg-linear-to-br from-[#ff6b35] to-[#ff8c42] text-white' : ''}
                                     `}
                                 >
                                     <span className="relative z-10">{option}</span>

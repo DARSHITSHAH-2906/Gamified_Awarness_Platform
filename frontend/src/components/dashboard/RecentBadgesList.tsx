@@ -37,7 +37,7 @@ export const RecentBadgesList = ({ badges = [] }: RecentBadgesListProps) => {
                             whileHover={{ scale: 1.1 }}
                         >
                             <div
-                                className={`w-14 h-14 rounded-xl bg-gradient-to-br ${badge.name === 'Unknown' ? 'from-gray-300 to-gray-400' : 'from-yellow-400 to-orange-500'} flex items-center justify-center shadow-md cursor-help transition-all group-hover:shadow-lg`}
+                                className={`w-14 h-14 rounded-xl bg-linear-to-br ${badge.name === 'Unknown' ? 'from-gray-300 to-gray-400' : 'from-yellow-400 to-orange-500'} flex items-center justify-center shadow-md cursor-help transition-all group-hover:shadow-lg`}
                                 title={badge.name}
                             >
                                 <Icon size={24} className="text-white" />

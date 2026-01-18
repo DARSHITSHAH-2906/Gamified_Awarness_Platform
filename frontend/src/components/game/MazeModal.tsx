@@ -25,7 +25,7 @@ export const MazeModal = ({ isOpen, onClose, levelId }: MazeModalProps) => {
 
                     {/* Modal Content */}
                     <motion.div
-                        className="relative w-full max-w-6xl aspect-[16/9] bg-slate-900 rounded-3xl shadow-2xl border-4 border-slate-700 overflow-hidden flex flex-col"
+                        className="relative w-full max-w-6xl aspect-video bg-slate-900 rounded-3xl shadow-2xl border-4 border-slate-700 overflow-hidden flex flex-col"
                         initial={{ scale: 0.9, opacity: 0, y: 20 }}
                         animate={{ scale: 1, opacity: 1, y: 0 }}
                         exit={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -44,7 +44,7 @@ export const MazeModal = ({ isOpen, onClose, levelId }: MazeModalProps) => {
                         <div className="flex-1 relative overflow-hidden bg-slate-950">
                             {/* Pass onClose to handle win state/exit */}
                             <MazeProvider onComplete={onClose}>
-                                <MazeGame onClose={onClose} levelId={levelId} />
+                                <MazeGame levelId={levelId} />
                             </MazeProvider>
                         </div>
                     </motion.div>

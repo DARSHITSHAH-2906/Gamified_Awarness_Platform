@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { socialApi } from '../../lib/api';
 import { X, Swords, Trophy, Clock, Coins, User, Search } from 'lucide-react';
@@ -15,13 +15,13 @@ const CreateDuelModal: React.FC<CreateDuelModalProps> = ({ isOpen, onClose, onSu
     const [suggestions, setSuggestions] = useState<any[]>([]);
     const [users, setUsers] = useState<any[]>([]);
     const [selectedOpponent, setSelectedOpponent] = useState<any>(null);
-    const [isSearching, setIsSearching] = useState(false);
+    const [isSearching, ] = useState(false);
 
     const [wager, setWager] = useState(50);
     const [metric, setMetric] = useState('XP');
     const [durationDays, setDurationDays] = useState(7);
 
-    let timer = useRef<number|undefined>(undefined);
+    let timer = useRef<NodeJS.Timeout|undefined>(undefined);
 
     useEffect(()=>{
         const fetchUsers = async () => {

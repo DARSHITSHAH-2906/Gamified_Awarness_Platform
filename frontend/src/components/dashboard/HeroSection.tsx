@@ -73,7 +73,7 @@ export const HeroSection = ({
                             </div>
                             <ProgressBar current={currentXP % 30} max={30} showLabel={false} size="lg" />
                         </div>
-                        <Link to="/dashboard/play?return=/dashboard" className="hidden md:block flex-shrink-0">
+                        <Link to="/dashboard/play?return=/dashboard" className="hidden md:block shrink-0">
                             <GameButton variant="primary" size="md">
                                 <Play size={20} className="fill-current" />
                                 Continue

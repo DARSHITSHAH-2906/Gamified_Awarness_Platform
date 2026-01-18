@@ -37,7 +37,6 @@ const ProfilePage = () => {
                     <SkillsSection skills={user.topSkills || []} updateUser={updateUser} />
 
                     <div>
-                        {/* <h3 className="text-xl font-bold text-dark mb-4 pl-1">Badges</h3> */}
                         <RecentBadgesList badges={user.badges || []} />
                     </div>
                 </div>

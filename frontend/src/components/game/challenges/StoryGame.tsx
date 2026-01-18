@@ -1,12 +1,11 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface StoryGameProps {
-    data: any; // Can contain initial context if needed, though we use the specific story tree below
     onComplete: (xp: number) => void;
 }
 
-export const StoryGame = ({ data, onComplete }: StoryGameProps) => {
+export const StoryGame = ({ onComplete }: StoryGameProps) => {
     // Hardcoded Story Tree as requested
     const storyTree: any = {
         start: {
@@ -180,7 +179,7 @@ export const StoryGame = ({ data, onComplete }: StoryGameProps) => {
                                     whileHover={{ scale: 1.02, x: 5 }}
                                     whileTap={{ scale: 0.98 }}
                                     onClick={() => handleChoice(choice.next)}
-                                    className="bg-white border-2 border-[#ff8c42] text-gray-800 py-4 px-6 rounded-xl text-lg font-bold shadow-sm hover:bg-gradient-to-r hover:from-[#ff6b35] hover:to-[#ff8c42] hover:text-white hover:border-transparent hover:shadow-lg transition-all text-left flex items-center justify-between group"
+                                    className="bg-white border-2 border-[#ff8c42] text-gray-800 py-4 px-6 rounded-xl text-lg font-bold shadow-sm hover:bg-linear-to-r hover:from-[#ff6b35] hover:to-[#ff8c42] hover:text-white hover:border-transparent hover:shadow-lg transition-all text-left flex items-center justify-between group"
                                 >
                                     <span>{choice.text}</span>
                                     <span className="opacity-0 group-hover:opacity-100 transition-opacity">➔</span>
@@ -192,7 +191,7 @@ export const StoryGame = ({ data, onComplete }: StoryGameProps) => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="bg-gradient-to-br from-[#fff5f0] to-white p-8 rounded-2xl shadow-[0_10px_40px_rgba(255,107,53,0.2)] border-[3px] border-[#ff6b35] text-center"
+                        className="bg-linear-to-br from-[#fff5f0] to-white p-8 rounded-2xl shadow-[0_10px_40px_rgba(255,107,53,0.2)] border-[3px] border-[#ff6b35] text-center"
                     >
                         <div className="text-6xl mb-4 animate-bounce">
                             {ending === 'great' ? '🌟' : ending === 'good' ? '😊' : '👍'}

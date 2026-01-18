@@ -1,4 +1,3 @@
-import React from 'react';
 import { clsx } from 'clsx';
 import { motion } from 'framer-motion';
 
@@ -18,7 +17,7 @@ export const LevelBadge = ({ level, size = 'md', className }: LevelBadgeProps) =
     return (
         <motion.div
             className={clsx(
-                'flex items-center justify-center rounded-full font-fredoka font-bold bg-gradient-to-br from-primary to-primary-hover text-white shadow-lg border-2 border-white',
+                'flex items-center justify-center rounded-full font-fredoka font-bold bg-linear-to-br from-primary to-primary-hover text-white shadow-lg border-2 border-white',
                 sizes[size],
                 className
             )}

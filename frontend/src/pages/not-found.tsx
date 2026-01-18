@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 
 const NotFound = () => {
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams, ] = useSearchParams();
     const returnPath = searchParams.get('return') || '/';
 
     return (

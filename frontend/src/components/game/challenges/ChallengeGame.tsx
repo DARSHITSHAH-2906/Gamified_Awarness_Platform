@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, Trophy } from 'lucide-react';
-import { gameApi } from '../../../lib/api';
 import { toast } from 'react-hot-toast';
 
 // Import Game Components (will be created next)

@@ -6,21 +6,16 @@ import { X } from 'lucide-react';
 
 import { useState } from 'react';
 import { gameApi } from '../lib/api';
-import { ChallengeGame } from '../components/game/challenges/ChallengeGame';
 
 const MazePage = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const levelId = searchParams.get('levelId') || undefined;
-    const [levelData, setLevelData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (levelId) {
             gameApi.getLevel(levelId)
-                .then(res => {
-                    setLevelData(res.data);
-                })
                 .catch(err => {
                     console.error("Failed to fetch level", err);
                 })
@@ -51,7 +46,7 @@ const MazePage = () => {
             {/* Game Container */}
             <div className="flex-1 w-full h-full relative overflow-hidden">
                 <MazeProvider onComplete={handleClose}>
-                    <MazeGame onClose={handleClose} levelId={levelId} />
+                    <MazeGame levelId={levelId} />
                 </MazeProvider>
             </div>
         </div>

@@ -4,7 +4,7 @@ import { Shield, Heart, Twitter, Youtube, Instagram } from "lucide-react";
 
 export function Footer() {
     return (
-        <footer className="py-16 px-4 bg-gradient-to-t from-slate-100 to-white border-t border-border">
+        <footer className="py-16 px-4 bg-linear-to-t from-slate-100 to-white border-t border-border">
             <div className="container mx-auto">
                 <div className="grid md:grid-cols-4 gap-12">
                     {/* Brand */}

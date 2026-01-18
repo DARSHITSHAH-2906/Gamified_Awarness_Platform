@@ -1,11 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { TrendingUp } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Trophy } from "lucide-react";
 import { GameCard } from "@/components/ui/GameCard";
-import { GameBadge } from "@/components/ui/GameBadge";
-import { GameButton } from "@/components/ui/GameButton";
 
 import { getAvatarSeed } from "@/utils/avatarUtils";
 import { gameApi } from "@/lib/api";
