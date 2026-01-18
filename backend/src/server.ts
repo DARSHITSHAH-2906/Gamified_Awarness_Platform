@@ -43,7 +43,7 @@ export class App {
 
         // Middleware
         this.app.use(cors({
-            origin: [process.env.LOCAL_FRONTEND_URL as string, process.env.DEPLOYED_FRONTEND_URL as string],
+            origin: [process.env.DEVELOPMENT_FRONTEND_URL as string, process.env.PRODUCTION_FRONTEND_URL as string],
             credentials: true
         }));
 
