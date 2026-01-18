@@ -9,6 +9,7 @@ import {DuelRouter} from './routes/duel.routes.js';
 import { initDailyQuestsJob } from './jobs/dailyQuests.job.js';
 import cookieParser from "cookie-parser";
 dotenv.config();
+const Frontend_URL = process.env.Frontend_URL || 'http://localhost:5173' || 'http://localhost:3000';
 
 // Initialize Cron Jobs
 initDailyQuestsJob();
@@ -39,7 +40,7 @@ export class App{
         
         // Middleware
         this.app.use(cors({
-            origin: ['http://localhost:5173', 'http://localhost:3000'],
+            origin: [ Frontend_URL ,'http://localhost:5173', 'http://localhost:3000'],
             credentials: true
         }));
         
