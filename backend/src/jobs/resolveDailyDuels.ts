@@ -1,4 +1,4 @@
-import {DuelController} from '@/controllers/duel.controller';
+import {DuelController} from '../controllers/duel.controller.js';
 import cron from 'node-cron';
 
 const duelController = new DuelController();

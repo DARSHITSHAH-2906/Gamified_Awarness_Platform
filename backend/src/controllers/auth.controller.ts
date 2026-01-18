@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
 import User from '../models/User.js';
-import { generateToken } from "../services/generateToken"
+import { generateToken } from "../services/generateToken.js"
 
 export class AuthController {
     constructor() { }

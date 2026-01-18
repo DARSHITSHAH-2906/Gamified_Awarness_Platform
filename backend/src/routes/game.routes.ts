@@ -1,7 +1,7 @@
 import { auth } from '../middleware/auth.js';
-import { LevelController } from '@/controllers/level.controller.js';
-import { QuestController } from '@/controllers/quest.controller.js';
-import { UserController } from '@/controllers/user.controller.js';
+import { LevelController } from '../controllers/level.controller.js';
+import { QuestController } from '../controllers/quest.controller.js';
+import { UserController } from '../controllers/user.controller.js';
 import express, { Router } from 'express';
 
 export class GameRouter{

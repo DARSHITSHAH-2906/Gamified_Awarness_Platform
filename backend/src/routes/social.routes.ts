@@ -2,10 +2,10 @@ import express, { Router } from 'express';
 import { SocialController } from '../controllers/social.controller.js';
 import { UserController } from '../controllers/user.controller.js';
 import { auth } from '../middleware/auth.js';
-import { QuestController } from '@/controllers/quest.controller.js';
+import { QuestController } from '../controllers/quest.controller.js';
 
 
-export class SocialRouter{
+export class SocialRouter{  
     public router : Router;
     private socialController : SocialController;
     private userController : UserController;

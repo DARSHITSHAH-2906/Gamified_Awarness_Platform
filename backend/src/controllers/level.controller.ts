@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import User from '@/models/User.js';
+import User from '../models/User.js';
 import Challenge from '../models/Challenge.js';
-import Level from '@/models/Level.js';
-import { QuestController } from "@/controllers/quest.controller.js";
-import Region from '@/models/Region.js';
+import Level from '../models/Level.js';
+import { QuestController } from "../controllers/quest.controller.js";
+import Region from '../models/Region.js';
 
 export class LevelController {
     constructor(private readonly questController: QuestController) { }
